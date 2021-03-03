@@ -9,106 +9,77 @@ from Bio.Seq import Seq
 import sys
 from os import path, mkdir
 import logging
-import click
 
-@click.command()
-@click.option('--source','-s', default='',help='Source fasta or fastq file')
-@click.option('--motifs','-m',default=8,help='Number of conserved motifs to use for the evaluation (default:8)')
-@click.option('--target','-t',default='',help='(optional) hybridation target if desired')
-@click.option('--pool','-p',default=100,help='Size of the pool (number of sequences per generation) (default: 100)')
-@click.option('--gens','-g',default=1000,help='Number of generations to simulate (default:1000)')
-@click.option('--candidates','-c', default=10,help='Number of candidates to generate (default: 10)')
-@click.option('--length','-l',default=10,help='Minimum length desired for the generated aptamers (default: 10)')
-@click.option('--hyperd_gens','-hg',default=3,help='Number of subgenerations per hyperdiverse period (default: 3)')
-@click.option('--cons_hyperd','-ch',default=10,help='Maximum number of consecutive hyperdiverse periods tolerated (default: 10)')
-@click.option('--cons_score','-cs',default=10,help='Maximum number of consecutive generations with the same score tolerated (default: 10)')
-@click.option('--graphs','-gp',default='True',help='(T/F) Generate graphs for this project (default: T)')
-@click.option('--break_score','-bc',default=0.99,help='Minimum score for early stopping the algorithm between 0 and 1 (default: 0.99)')
-@click.option('--path','-ph',default='',help='Path to whre to save the output of this project')
-@click.option('--name','-n',default='',help='Name of the project')
-def CMD_shell(source,motifs,target,pool,gens,candidates,length,hyperd_gens,cons_hyperd,cons_score,graphs,break_score,path,name):
-    '''AptaDesign v.1.0.0
-    Aptamer design in silico based on directed evolution and previous data. With possibility for creating aptamers capable of hybridizing specific sequences.
-
-    USAGE: AptaDesign.exe [OPTIONS]*
-    *Note: if no option are provided, the programs startsin its UI mode'''
-    if source=='':
-        main()
-    else:
-        AptaDesign(fasta_file=source,n_conserved_seqs=motifs,Hybridation_target=target,n_pool=pool,n_gen=gens,n_candidates=candidates,min_length=length,hyperdiverse_generations=hyperd_gens,max_consecutive_hyperdiverse=cons_hyperd,max_consecutive_score=cons_score,visualize=graphs,break_score=break_score,output_path=path,output_name=name)
-
-
-              
 def AptaDesign(fasta_file='',n_conserved_seqs=8,Hybridation_target='',n_pool=100,n_gen=1000,n_candidates=10,min_length=10,hyperdiverse_generations=3,max_consecutive_hyperdiverse=10,max_consecutive_score=10,visualize='True',break_score=0.99,output_path='./',output_name='Final_candidates'):
-    click.echo('Welcome to AptaDesign v1.0.0')
-    click.echo('------------------------------------------')
+    print('Welcome to AptaDesign 1.0.0')
+    print('------------------------------------------')
     if not(path.isfile(fasta_file)):
-        click.echo('Please provide the path to a valid fasta/fastq file')
+        print('Please provide the path to a valid fasta/fastq file')
         sys.exit()
     if not(path.isdir(output_path)):
-        click.echo('Please provide a valid directory for saving the output')
+        print('Please provide a valid directory for saving the output')
     if  not(('.fasta' in fasta_file) or ('.fastq' in fasta_file)):
-        click.echo('No fasta or fastq file provided, please try again')
+        print('No fasta or fastq file provided, please try again')
         sys.exit()
     save_path=output_path+'/'+output_name
     if path.isdir(save_path):
-        click.echo('Please choose another name, this name is already used')
+        print('Please choose another name, this name is already used')
         sys.exit()
     n_conserved_seqs=check_num_input(n_conserved_seqs)
     if not(n_conserved_seqs):
-        click.echo('Please enter a valid number of mottifs to use as evaluation')
+        print('Please enter a valid number of mottifs to use as evaluation')
         sys.exit()
     n_pool=check_num_input(n_pool)
     if not(n_pool):
-        click.echo('Please enter a valid pool size')
+        print('Please enter a valid pool size')
         sys.exit()
     n_gen=check_num_input(n_gen)
     if not(n_gen):
-        click.echo('Please enter a valid number of generations')
+        print('Please enter a valid number of generations')
         sys.exit()
     n_candidates=check_num_input(n_candidates)
     if not(n_candidates):
-        click.echo('Please enter a valid number of candidates to select')
+        print('Please enter a valid number of candidates to select')
         sys.exit()
     min_length=check_num_input(min_length)
     if not(min_length):
-        click.echo('Please enter a valid minimum length')
+        print('Please enter a valid minimum length')
         sys.exit()
     hyperdiverse_generations=check_num_input(hyperdiverse_generations)
     if not(hyperdiverse_generations):
-        click.echo('Please enter a valid number of subgenerations per hyperdiverse period')
+        print('Please enter a valid number of subgenerations per hyperdiverse period')
         sys.exit()
     max_consecutive_hyperdiverse=check_num_input(max_consecutive_hyperdiverse)
     if not(max_consecutive_hyperdiverse):
-        click.echo('Please enter a valid maximum number of consecutive hyperdiverse periods')
+        print('Please enter a valid maximum number of consecutive hyperdiverse periods')
         sys.exit()
     max_consecutive_score=check_num_input(max_consecutive_score)
     if not(max_consecutive_score):
-        click.echo('Please enter a valid maximum number of consecutive equal scores')
+        print('Please enter a valid maximum number of consecutive equal scores')
         sys.exit()
     break_score=check_float_input(break_score)
     if not(break_score) or break_score>1 or break_score<0:
-        click.echo('Please enter a valid break score')
+        print('Please enter a valid break score')
         sys.exit()
 
     mkdir(save_path)
     logging.basicConfig(filename=save_path+'/'+output_name+'.log',filemode='w',format='%(asctime)s -%(message)s',level=logging.INFO)
     logging.info('Starting program')
     df_conserved_seqs,max_strc_MFE=Get_conserved_seqs(fasta_file,n_conserved_seqs)
-    click.echo('------------------------------------------')
-    click.echo('Begining with Aptamer Design by Directed Evolution')
+    print('------------------------------------------')
+    print('Begining with Aptamer Design by Directed Evolution')
     logging.info('Begining with Aptamer Design by Directed Evolution')
-    click.echo('------------------------------------------')
-    click.echo('Defining evaluation equation')
+    print('------------------------------------------')
+    print('Defining evaluation equation')
     logging.info('Defining evaluation equation')
     total_motif_score=df_conserved_seqs['Score'].sum()
     df_conserved_seqs['Weights']=df_conserved_seqs['Score']/total_motif_score
-    click.echo('Evaluation equation defined')
+    print('Evaluation equation defined')
     logging.info('Evaluation equation defined')
-    click.echo('------------------------------------------')
-    click.echo('Generating starting pool')
+    print('------------------------------------------')
+    print('Generating starting pool')
     logging.info('Generating starting pool')
-    click.echo('------------------------------------------')
+    print('------------------------------------------')
     if bool(Hybridation_target):
         target_seq=DNA_check(Hybridation_target.lower())
         if bool(target_seq):
@@ -117,15 +88,15 @@ def AptaDesign(fasta_file='',n_conserved_seqs=8,Hybridation_target='',n_pool=100
             max_MFE=abs(MFE_Hybridization(starting_sequence,target_seq))
             pool=initial_pool_with_seq(n_pool,starting_sequence,min_length)
         else:
-            click.echo('Target sequence provided is not valid, please try again')
+            print('Target sequence provided is not valid, please try again')
             logging.info('Target sequence provided is not valid, please try again')
             sys.exit()
     else:
         pool=initial_pool_gen(n_pool,min_length)
     candidates=pd.DataFrame({'sequences':['','','','','','','','','',''],'score':[0,0,0,0,0,0,0,0,0,0]})
-    click.echo('Starting pool generated')
+    print('Starting pool generated')
     logging.info('Starting pool generated')
-    click.echo('------------------------------------------')
+    print('------------------------------------------')
     if visualize in ['True','true','T','t','Yes','yes','Y','y','TRUE','YES',True]:
         visualize=True
     else:
@@ -135,15 +106,15 @@ def AptaDesign(fasta_file='',n_conserved_seqs=8,Hybridation_target='',n_pool=100
         scores=[]
         line=[]
         line2=[]
-    click.echo('Starting Evolution')
+    print('Starting Evolution')
     logging.info('Starting Evolution')
-    click.echo('------------------------------------------')
+    print('------------------------------------------')
     c_hyperdiverse=0
     score=0
     c_score=0
     for generation in range(n_gen):
         logging.info('Score: '+str(score))
-        click.echo('Current generation: '+str(generation+1)+' of '+str(n_gen))
+        print('Current generation: '+str(generation+1)+' of '+str(n_gen))
         logging.info('Current generation: '+str(generation+1)+' of '+str(n_gen))
         candidates_past=candidates
         past_score=score
@@ -159,32 +130,32 @@ def AptaDesign(fasta_file='',n_conserved_seqs=8,Hybridation_target='',n_pool=100
         if score==past_score:
             c_score+=1
             if c_score>max_consecutive_score:
-                click.echo('------------------------------------')
-                click.echo('Detected maximum with low possibilities of overcoming')
-                click.echo('Stopping Evolution')
+                print('------------------------------------')
+                print('Detected maximum with low possibilities of overcoming')
+                print('Stopping Evolution')
                 logging.info('Detected maximum with low possibilities of overcoming')
                 logging.info('Stopping Evolution')
-                click.echo('------------------------------------')
+                print('------------------------------------')
                 break
         else:
             c_score=0
         if score>break_score:
-            click.echo('------------------------------------')
-            click.echo('Minimum break score reached')
-            click.echo('Stopping evolution')
+            print('------------------------------------')
+            print('Minimum break score reached')
+            print('Stopping evolution')
             logging.info('Minimum break score reached')
             logging.info('Stopping evolution')
-            click.echo('------------------------------------')
+            print('------------------------------------')
             break
         if candidate_similarities(candidates,candidates_past)>0.7:
             c_hyperdiverse+=1
             if c_hyperdiverse>max_consecutive_hyperdiverse:
-                click.echo('------------------------------------')
-                click.echo('Reached plateau unlikely to overcome to the current settings')
-                click.echo('Stopping Evolution')
+                print('------------------------------------')
+                print('Reached plateau unlikely to overcome to the current settings')
+                print('Stopping Evolution')
                 logging.info('Reached plateau unlikely to overcome to the current settings')
                 logging.info('Stopping Evolution')
-                click.echo('------------------------------------')
+                print('------------------------------------')
                 break
             logging.info('Starting hyperdiverse period')
             if bool(Hybridation_target):
@@ -207,36 +178,36 @@ def AptaDesign(fasta_file='',n_conserved_seqs=8,Hybridation_target='',n_pool=100
     final_candidates.to_excel(save_path+'/'+output_name+'_results.xlsx')
     if visualize:
         plt.savefig(save_path+'/'+output_name+'_fig.png',bbox_inches='tight')
-    click.echo('------------------------------------')
-    click.echo('Succesfully executed!')
-    click.echo('------------------------------------')
-    click.echo('Output located in: '+save_path)
-    click.echo('------------------------------------')
-    click.echo('Thank you for using Aptamer Designer!')
+    print('------------------------------------')
+    print('Succesfully executed!')
+    print('------------------------------------')
+    print('Output located in: '+save_path)
+    print('------------------------------------')
+    print('Thank you for using Aptamer Designer!')
 
 
 def Get_conserved_seqs(fasta_file,n_conserved_seqs=8):
-    click.echo('Selecting conserved motifs')
+    print('Selecting conserved motifs')
     logging.info('Selecting conserved motifs')
-    click.echo('------------------------------------------')
+    print('------------------------------------------')
     if '.fasta' in fasta_file:
         df_fasta=fasta_to_df(fasta_file)
     else:
         df_fasta=fastq_to_df(fasta_file)
-    click.echo('Generating pool of possible motifs')
+    print('Generating pool of possible motifs')
     logging.info('Generating pool of possible motifs')
-    click.echo('------------------------------------------')
+    print('------------------------------------------')
     max_strc_MFE=abs(np.min(df_fasta['MFE']))
     df_seqs=Get_Candidate_seqs(df_fasta)
-    click.echo('Pool of possible motifs generated')
+    print('Pool of possible motifs generated')
     logging.info('Pool of possible motifs generated')
-    click.echo('------------------------------------------')
+    print('------------------------------------------')
     df_conserved_seqs=Conserved_Seq_Evaluate(df_fasta,df_seqs,n_conserved_seqs)
-    click.echo('Selected conserved motifs:')
-    click.echo(df_conserved_seqs.loc[:,['Sequence','Structure']])
+    print('Selected conserved motifs:')
+    print(df_conserved_seqs.loc[:,['Sequence','Structure']])
     logging.info('Selected conserved motifs:')
     logging.info('Selected conserved motifs:')
-    click.echo('------------------------------------------')
+    print('------------------------------------------')
     return df_conserved_seqs, max_strc_MFE
 
 def fasta_to_df(fasta_file):
@@ -259,7 +230,7 @@ def fasta_to_df(fasta_file):
             if len(line)==0:
                 break
     if len(seqs)==0:
-        click.echo('No valid sequences detected in the provided fasta file, please try again')
+        print('No valid sequences detected in the provided fasta file, please try again')
         sys.exit()
     dict_fasta={'Ids':ids,'Sequence':seqs,'Structure':strs,'MFE':MFEs}
     df_fasta=pd.DataFrame(dict_fasta)
@@ -285,7 +256,7 @@ def fastq_to_df(fasta_file):
             if len(line)==0:
                 break
     if len(seqs)==0:
-        click.echo('No valid sequences detected in the provided fasta file, please try again')
+        print('No valid sequences detected in the provided fasta file, please try again')
         sys.exit()
     dict_fasta={'Ids':ids,'Sequence':seqs,'Structure':strs,'MFE':MFEs}
     df_fasta=pd.DataFrame(dict_fasta)
@@ -337,7 +308,7 @@ def Get_Candidate_seqs(df_fasta):
     seq_num=0
     for ind in list(df_fasta.index.values):
         seq_num+=1
-        click.echo('Obtaining motifs from sequence '+str(seq_num)+' of '+str(len(list(df_fasta.index.values))))
+        print('Obtaining motifs from sequence '+str(seq_num)+' of '+str(len(list(df_fasta.index.values))))
         logging.info('Obtaining motifs from sequence '+str(seq_num)+' of '+str(len(list(df_fasta.index.values))))
         seq=df_fasta.loc[ind,'Sequence']
         strc=df_fasta.loc[ind,'Structure']
@@ -345,21 +316,21 @@ def Get_Candidate_seqs(df_fasta):
         c=0
         while True:
             if start_n==len(seq):
-                click.echo('Number of motifs generated for sequence '+str(seq_num)+': '+str(c))
+                print('Number of motifs generated for sequence '+str(seq_num)+': '+str(c))
                 logging.info('Number of motifs generated for sequence '+str(seq_num)+': '+str(c))
-                click.echo('------------------------------------------')
+                print('------------------------------------------')
                 break
             else:
                 new_s=strc[start_n:].find('...')
                 if new_s==-1:
-                    click.echo('Number of motifs generated for sequence '+str(seq_num)+': '+str(c))
+                    print('Number of motifs generated for sequence '+str(seq_num)+': '+str(c))
                     logging.info('Number of motifs generated for sequence '+str(seq_num)+': '+str(c))
-                    click.echo('------------------------------------------')
+                    print('------------------------------------------')
                     break
                 elif strc[new_s+start_n:].find('(')==-1 and strc[new_s+start_n:].find('.)')==-1:
-                    click.echo('Number of motifs generated for sequence '+str(seq_num)+': '+str(c))
+                    print('Number of motifs generated for sequence '+str(seq_num)+': '+str(c))
                     logging.info('Number of motifs generated for sequence '+str(seq_num)+': '+str(c))
-                    click.echo('------------------------------------------')
+                    print('------------------------------------------')
                     break
             for n in range(start_n,len(seq)):
                 if '...'==strc[n:n+3]:
@@ -407,7 +378,7 @@ def Get_Candidate_seqs(df_fasta):
                         seq_df.loc[str(ind)+'_'+str(c)+'_2']=[sub_seq_2,1,sub_strc_2]
             
             start_n=next_start
-    click.echo('------------------------------------------')
+    print('------------------------------------------')
     return seq_df
             
 
@@ -415,11 +386,11 @@ def Conserved_Seq_Evaluate(df_fasta,df_seqs,n_conserved_seqs):
     Edits_seq=[]
     Edits_str=[]
     c=0
-    click.echo('Total candidate motifs: '+str(len(list(df_seqs.index.values))))
+    print('Total candidate motifs: '+str(len(list(df_seqs.index.values))))
     logging.info('Total candidate motifs: '+str(len(list(df_seqs.index.values))))
     for ind in list(df_seqs.index.values):
         c+=1
-        click.echo('Evaluating motif: '+str(c)+' of '+str(len(list(df_seqs.index.values))))
+        print('Evaluating motif: '+str(c)+' of '+str(len(list(df_seqs.index.values))))
         logging.info('Evaluating motif: '+str(c)+' of '+str(len(list(df_seqs.index.values))))
         edit_seqs=0
         edit_strcs=0
@@ -656,15 +627,15 @@ def new_pool_gen(candidates,n_pool,n_candidates,min_length):
     return pd.DataFrame(seqs,columns=['sequences'])
 
 def new_pool_explosion(candidates,n_pool,n_candidates,df_conserved_seqs,hyperdiverse_generations,min_length,max_strc_MFE):
-    click.echo('------------------------------------------')
-    click.echo('Starting hyperdiverse subgenerations to liberate plateau')
+    print('------------------------------------------')
+    print('Starting hyperdiverse subgenerations to liberate plateau')
     div=int((n_pool/n_candidates)-1)
     seqs=list(candidates.sequences)
     seqs_len=[len(x) for x in seqs]
-    click.echo('------------------------------------------')
+    print('------------------------------------------')
     for n in range(hyperdiverse_generations):
         seqs_2=[]
-        click.echo('Current subgeneration: '+str(n+1))
+        print('Current subgeneration: '+str(n+1))
         for seq in seqs:
             seqs_2.append(seq)
             for n in range(div):
@@ -677,14 +648,14 @@ def new_pool_explosion(candidates,n_pool,n_candidates,df_conserved_seqs,hyperdiv
                         new_seq=n_addition_mut(new_seq)
                 seqs_2.append(new_seq)
         seqs=seqs_2[:]
-    click.echo('------------------------------------------')
-    click.echo('End of hyperdiverse period')
-    click.echo('------------------------------------------')
+    print('------------------------------------------')
+    print('End of hyperdiverse period')
+    print('------------------------------------------')
     pool=pd.DataFrame(seqs,columns=['sequences'])
     pool['score']=0
-    click.echo('------------------------------------------')
-    click.echo('Selecting subset from hyperdiverse period')
-    click.echo('------------------------------------------')
+    print('------------------------------------------')
+    print('Selecting subset from hyperdiverse period')
+    print('------------------------------------------')
     for ind in list(pool.index.values):
         candidate_str,candidate_str_MFE=Structure_Aptamer(pool.loc[ind,'sequences'])
         for ind2 in list(df_conserved_seqs.index.values):
@@ -704,21 +675,21 @@ def new_pool_explosion(candidates,n_pool,n_candidates,df_conserved_seqs,hyperdiv
         else:
             pool.loc[ind,'strc_MFE_norm']=abs(candidate_str_MFE)/max_strc_MFE
     pool['score']=0.85*pool['score']+0.15*pool['strc_MFE_norm']
-    click.echo('------------------------------------------')
-    click.echo('Subset created, return to main algorithm')
-    click.echo('------------------------------------------')
+    print('------------------------------------------')
+    print('Subset created, return to main algorithm')
+    print('------------------------------------------')
     return pool.nlargest(n_pool,['score'])
 
 def new_pool_explosion_with_target(candidates,n_pool,n_candidates,df_conserved_seqs,hyperdiverse_generations,min_length,max_strc_MFE,target_seq,max_MFE):
-    click.echo('------------------------------------------')
-    click.echo('Starting hyperdiverse subgenerations to liberate plateau')
+    print('------------------------------------------')
+    print('Starting hyperdiverse subgenerations to liberate plateau')
     div=int((n_pool/n_candidates)-1)
     seqs=list(candidates.sequences)
     seqs_len=[len(x) for x in seqs]
-    click.echo('------------------------------------------')
+    print('------------------------------------------')
     for n in range(hyperdiverse_generations):
         seqs_2=[]
-        click.echo('Current subgeneration: '+str(n+1))
+        print('Current subgeneration: '+str(n+1))
         for seq in seqs:
             seqs_2.append(seq)
             for _ in range(div):
@@ -731,14 +702,14 @@ def new_pool_explosion_with_target(candidates,n_pool,n_candidates,df_conserved_s
                         new_seq=n_addition_mut(new_seq)
                 seqs_2.append(new_seq)
         seqs=seqs_2[:]
-    click.echo('------------------------------------------')
-    click.echo('End of hyperdiverse period')
-    click.echo('------------------------------------------')
+    print('------------------------------------------')
+    print('End of hyperdiverse period')
+    print('------------------------------------------')
     pool=pd.DataFrame(seqs,columns=['sequences'])
     pool['score']=0
-    click.echo('------------------------------------------')
-    click.echo('Selecting subset from hyperdiverse period')
-    click.echo('------------------------------------------')
+    print('------------------------------------------')
+    print('Selecting subset from hyperdiverse period')
+    print('------------------------------------------')
     for ind in list(pool.index.values):
         candidate_str,candidate_str_MFE=Structure_Aptamer(pool.loc[ind,'sequences'])
         Hybrid_MFE=MFE_Hybridization(pool.loc[ind,'sequences'],target_seq)
@@ -768,9 +739,9 @@ def new_pool_explosion_with_target(candidates,n_pool,n_candidates,df_conserved_s
     pool['dMFE_norm']=pool['dMFE']/max_MFE
     pool['score']=0.85*pool['score']+0.15*pool['strc_MFE_norm']
     pool['score']=0.85*pool['score']+0.15*pool['dMFE_norm']
-    click.echo('------------------------------------------')
-    click.echo('Subset created, return to main algorithm')
-    click.echo('------------------------------------------')
+    print('------------------------------------------')
+    print('Subset created, return to main algorithm')
+    print('------------------------------------------')
     return pool.nlargest(n_pool,['score'])
 
 def check_num_input(inpt):
@@ -788,20 +759,20 @@ def check_float_input(inpt):
         return False
 
 def main():
-    click.echo('Welcome to Aptadesigner v1.0.0')
-    click.echo('------------------------------------------')
-    click.echo('Please cite: ')
-    click.echo('Press enter to use the defaults')
-    click.echo('Please provide the path to your desired fasta or fastq file')
+    print('Welcome to Aptadesigner v1.0.0')
+    print('------------------------------------------')
+    print('Please cite: ')
+    print('Press enter to use the defaults')
+    print('Please provide the path to your desired fasta or fastq file')
     while True:
         fasta_file=input()
         if not(path.isfile(fasta_file)):
-            click.echo('Please provide the path to a valid fasta/fastq file')
+            print('Please provide the path to a valid fasta/fastq file')
         elif not(('.fasta' in fasta_file) or ('.fastq' in fasta_file)):
-            click.echo('No fasta or fastq file provided, please try again')
+            print('No fasta or fastq file provided, please try again')
         else:
             break
-    click.echo('Please insert the number of motifs to use for the evaluaion (default: 8)')
+    print('Please insert the number of motifs to use for the evaluaion (default: 8)')
     while True:
         n_conserved_seqs=input()
         if n_conserved_seqs=='':
@@ -810,11 +781,11 @@ def main():
         else:
             n_conserved_seqs=check_num_input(n_conserved_seqs)
             if not(n_conserved_seqs):
-                click.echo('Please enter a valid pool size')
+                print('Please enter a valid pool size')
             else:
                 break
     
-    click.echo('Please insert the pool size to use (default: 100)')
+    print('Please insert the pool size to use (default: 100)')
     while True:
         n_pool=input()
         if n_pool=='':
@@ -823,10 +794,10 @@ def main():
         else:
             n_pool=check_num_input(n_pool)
             if not(n_pool):
-                click.echo('Please enter a valid pool size')
+                print('Please enter a valid pool size')
             else:
                 break
-    click.echo('Please insert the number of generations to simulate (default: 1000)')
+    print('Please insert the number of generations to simulate (default: 1000)')
     while True:
         n_gen=input()
         if n_gen=='':
@@ -835,11 +806,11 @@ def main():
         else:
             n_gen=check_num_input(n_gen)
             if not(n_gen):
-                click.echo('Please enter a valid number of generations')
+                print('Please enter a valid number of generations')
             else:
                 break
 
-    click.echo('Please insert the number of candidates to generate (default. 10)')
+    print('Please insert the number of candidates to generate (default. 10)')
     while True:
         n_candidates=input()
         if n_candidates=='':
@@ -848,10 +819,10 @@ def main():
         else:
             n_candidates=check_num_input(n_candidates)
             if not(n_candidates):
-                click.echo('Please enter a valid number of candidates')
+                print('Please enter a valid number of candidates')
             else:
                 break
-    click.echo('Please insert the maximum number of generations without score inprovement (default. 10)')
+    print('Please insert the maximum number of generations without score inprovement (default. 10)')
     while True:
         max_consecutive_score=input()
         if max_consecutive_score=='':
@@ -860,46 +831,46 @@ def main():
         else:
             max_consecutive_score=check_num_input(max_consecutive_score)
             if not(max_consecutive_score):
-                click.echo('Please enter a valid number of generations')
+                print('Please enter a valid number of generations')
             else:
                 break
-    click.echo('If you desire to enter an hybridation target please enter it now, otherwise press enter')
+    print('If you desire to enter an hybridation target please enter it now, otherwise press enter')
     Hybridation_target=input()
     if Hybridation_target!='':
         Hybridation_target=DNA_check(Hybridation_target.lower())
         if not(Hybridation_target):
             while True:
-                click.echo('Please enter a valid sequence')
+                print('Please enter a valid sequence')
                 Hybridation_target=input()
                 if Hybridation_target!='':
                     Hybridation_target=DNA_check(Hybridation_target.lower())
                     if Hybridation_target:
                         break
                 else:
-                    click.echo('No hybridation target provided')
+                    print('No hybridation target provided')
                     break
-    click.echo('Please insert the output path to save the results')
+    print('Please insert the output path to save the results')
     while True:
         output_path=input()
         if not(path.isdir(output_path)):
-            click.echo('Please insert a valid path')
+            print('Please insert a valid path')
         else:
             break
-    click.echo('Please give a name to this project')
+    print('Please give a name to this project')
     while True:
         output_name=input()
         if len(output_name)>0:
             save_path=output_path+'/'+output_name
             if path.isdir(save_path):
-                click.echo('Please choose another name, this name is already used')
+                print('Please choose another name, this name is already used')
             else:
                 break
-    click.echo('Do you want to generate graphs for this project? (T/F)')
-    visualize=input()
-    click.echo('Open advanzed options? (Y/N)')
-    adv_opt=input()
+    print('Do you want to generate graphs for this project?')
+    visualize=input('T/F: ')
+    print('Open advanzed options?')
+    adv_opt=input('Y/N: ')
     if adv_opt in ['True','true','T','t','Yes','yes','Y','y','TRUE','YES']:
-        click.echo('Please enter the minimum legnth of the generated apatmers (default. 10)')
+        print('Please enter the minimum legnth of the generated apatmers (default. 10)')
         while True:
             min_length=input()
             if min_length=='':
@@ -908,10 +879,10 @@ def main():
             else:
                 min_length=check_num_input(min_length)
                 if not(min_length):
-                    click.echo('Please enter a valid length')
+                    print('Please enter a valid length')
                 else:
                     break
-        click.echo('Please enter the number of subgenerations per hyperdiverse period (default. 3)')
+        print('Please enter the number of subgenerations per hyperdiverse period (default. 3)')
         while True:
             hyperdiverse_generations=input()
             if hyperdiverse_generations=='':
@@ -920,10 +891,10 @@ def main():
             else:
                 hyperdiverse_generations=check_num_input(hyperdiverse_generations)
                 if not(hyperdiverse_generations):
-                    click.echo('Please enter a valid number of generations')
+                    print('Please enter a valid number of generations')
                 else:
                     break
-        click.echo('click.echo enter the maximum number tolerable of consecutive hyperdiverse periods (default. 10)')
+        print('Print enter the maximum number tolerable of consecutive hyperdiverse periods (default. 10)')
         while True:
             max_consecutive_hyperdiverse=input()
             if max_consecutive_hyperdiverse=='':
@@ -932,10 +903,10 @@ def main():
             else:
                 max_consecutive_hyperdiverse=check_num_input(max_consecutive_hyperdiverse)
                 if not(max_consecutive_hyperdiverse):
-                    click.echo('Please enter a valid number of generations')
+                    print('Please enter a valid number of generations')
                 else:
                     break
-        click.echo('Please enter the break score (between 0 and 1) (default. 0.99)')
+        print('Please enter the break score (between 0 and 1) (default. 0.99)')
         while True:
             break_score=input()
             if break_score=='':
@@ -944,9 +915,9 @@ def main():
             else:
                 break_score=check_float_input(break_score)
                 if not(break_score):
-                    click.echo('Please enter a valid score (between 0 and 1)')
+                    print('Please enter a valid score (between 0 and 1)')
                 elif break_score>1 or break_score<0:
-                    click.echo('Please enter a valid score (between 0 and 1)')
+                    print('Please enter a valid score (between 0 and 1)')
                 else:
                     break
         AptaDesign(fasta_file=fasta_file,n_conserved_seqs=n_conserved_seqs,break_score=break_score,min_length=min_length,hyperdiverse_generations=hyperdiverse_generations,max_consecutive_hyperdiverse=max_consecutive_hyperdiverse,Hybridation_target=Hybridation_target,n_pool=n_pool,n_gen=n_gen,n_candidates=n_candidates,max_consecutive_score=max_consecutive_score,visualize=visualize,output_path=output_path,output_name=output_name)
@@ -955,7 +926,7 @@ def main():
 
 
 if __name__=='__main__':
-    CMD_shell()
+    main()
         
 
 
