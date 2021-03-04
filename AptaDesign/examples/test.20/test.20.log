@@ -1,0 +1,111 @@
+2021-03-01 07:56:31,311 -Starting program
+2021-03-01 07:56:31,316 -Selecting conserved motifs
+2021-03-01 07:56:43,193 -Generating pool of possible motifs
+2021-03-01 07:56:43,202 -Obtaining motifs from sequence 1 of 22
+2021-03-01 07:56:43,226 -Number of motifs generated for sequence 1: 5
+2021-03-01 07:56:43,228 -Obtaining motifs from sequence 2 of 22
+2021-03-01 07:56:43,248 -Number of motifs generated for sequence 2: 5
+2021-03-01 07:56:43,252 -Obtaining motifs from sequence 3 of 22
+2021-03-01 07:56:43,257 -Number of motifs generated for sequence 3: 1
+2021-03-01 07:56:43,259 -Obtaining motifs from sequence 4 of 22
+2021-03-01 07:56:43,276 -Number of motifs generated for sequence 4: 3
+2021-03-01 07:56:43,281 -Obtaining motifs from sequence 5 of 22
+2021-03-01 07:56:43,286 -Number of motifs generated for sequence 5: 1
+2021-03-01 07:56:43,288 -Obtaining motifs from sequence 6 of 22
+2021-03-01 07:56:43,300 -Number of motifs generated for sequence 6: 3
+2021-03-01 07:56:43,304 -Obtaining motifs from sequence 7 of 22
+2021-03-01 07:56:43,316 -Number of motifs generated for sequence 7: 3
+2021-03-01 07:56:43,318 -Obtaining motifs from sequence 8 of 22
+2021-03-01 07:56:43,330 -Number of motifs generated for sequence 8: 3
+2021-03-01 07:56:43,333 -Obtaining motifs from sequence 9 of 22
+2021-03-01 07:56:43,338 -Number of motifs generated for sequence 9: 1
+2021-03-01 07:56:43,341 -Obtaining motifs from sequence 10 of 22
+2021-03-01 07:56:43,347 -Number of motifs generated for sequence 10: 1
+2021-03-01 07:56:43,349 -Obtaining motifs from sequence 11 of 22
+2021-03-01 07:56:43,361 -Number of motifs generated for sequence 11: 3
+2021-03-01 07:56:43,365 -Obtaining motifs from sequence 12 of 22
+2021-03-01 07:56:43,379 -Number of motifs generated for sequence 12: 3
+2021-03-01 07:56:43,382 -Obtaining motifs from sequence 13 of 22
+2021-03-01 07:56:43,394 -Number of motifs generated for sequence 13: 3
+2021-03-01 07:56:43,395 -Obtaining motifs from sequence 14 of 22
+2021-03-01 07:56:43,398 -Number of motifs generated for sequence 14: 3
+2021-03-01 07:56:43,400 -Obtaining motifs from sequence 15 of 22
+2021-03-01 07:56:43,402 -Number of motifs generated for sequence 15: 3
+2021-03-01 07:56:43,406 -Obtaining motifs from sequence 16 of 22
+2021-03-01 07:56:43,441 -Number of motifs generated for sequence 16: 9
+2021-03-01 07:56:43,444 -Obtaining motifs from sequence 17 of 22
+2021-03-01 07:56:43,470 -Number of motifs generated for sequence 17: 5
+2021-03-01 07:56:43,473 -Obtaining motifs from sequence 18 of 22
+2021-03-01 07:56:43,488 -Number of motifs generated for sequence 18: 3
+2021-03-01 07:56:43,492 -Obtaining motifs from sequence 19 of 22
+2021-03-01 07:56:43,500 -Number of motifs generated for sequence 19: 5
+2021-03-01 07:56:43,504 -Obtaining motifs from sequence 20 of 22
+2021-03-01 07:56:43,507 -Number of motifs generated for sequence 20: 3
+2021-03-01 07:56:43,509 -Obtaining motifs from sequence 21 of 22
+2021-03-01 07:56:43,511 -Number of motifs generated for sequence 21: 3
+2021-03-01 07:56:43,517 -Obtaining motifs from sequence 22 of 22
+2021-03-01 07:56:43,521 -Number of motifs generated for sequence 22: 5
+2021-03-01 07:56:43,524 -Pool of possible motifs generated
+2021-03-01 07:56:43,526 -Total candidate motifs: 49
+2021-03-01 07:56:43,526 -Evaluating motif: 1 of 49
+2021-03-01 07:56:50,264 -Evaluating motif: 2 of 49
+2021-03-01 07:56:55,036 -Evaluating motif: 3 of 49
+2021-03-01 07:56:59,483 -Evaluating motif: 4 of 49
+2021-03-01 07:57:03,584 -Evaluating motif: 5 of 49
+2021-03-01 07:57:07,982 -Evaluating motif: 6 of 49
+2021-03-01 07:57:13,688 -Evaluating motif: 7 of 49
+2021-03-01 07:57:17,173 -Evaluating motif: 8 of 49
+2021-03-01 07:57:24,226 -Evaluating motif: 9 of 49
+2021-03-01 07:57:30,008 -Evaluating motif: 10 of 49
+2021-03-01 07:57:33,669 -Evaluating motif: 11 of 49
+2021-03-01 07:57:42,903 -Evaluating motif: 12 of 49
+2021-03-01 07:57:49,644 -Evaluating motif: 13 of 49
+2021-03-01 07:57:57,934 -Evaluating motif: 14 of 49
+2021-03-01 07:58:09,097 -Evaluating motif: 15 of 49
+2021-03-01 07:58:18,324 -Evaluating motif: 16 of 49
+2021-03-01 07:58:30,402 -Evaluating motif: 17 of 49
+2021-03-01 07:58:38,937 -Evaluating motif: 18 of 49
+2021-03-01 07:58:48,647 -Evaluating motif: 19 of 49
+2021-03-01 07:58:57,348 -Evaluating motif: 20 of 49
+2021-03-01 07:59:06,629 -Evaluating motif: 21 of 49
+2021-03-01 07:59:18,819 -Evaluating motif: 22 of 49
+2021-03-01 07:59:23,350 -Evaluating motif: 23 of 49
+2021-03-01 07:59:29,226 -Evaluating motif: 24 of 49
+2021-03-01 07:59:34,456 -Evaluating motif: 25 of 49
+2021-03-01 07:59:39,355 -Evaluating motif: 26 of 49
+2021-03-01 07:59:51,281 -Evaluating motif: 27 of 49
+2021-03-01 07:59:57,966 -Evaluating motif: 28 of 49
+2021-03-01 08:00:01,419 -Evaluating motif: 29 of 49
+2021-03-01 08:00:07,025 -Evaluating motif: 30 of 49
+2021-03-01 08:00:11,653 -Evaluating motif: 31 of 49
+2021-03-01 08:00:15,468 -Evaluating motif: 32 of 49
+2021-03-01 08:00:19,464 -Evaluating motif: 33 of 49
+2021-03-01 08:00:25,221 -Evaluating motif: 34 of 49
+2021-03-01 08:00:31,201 -Evaluating motif: 35 of 49
+2021-03-01 08:00:35,504 -Evaluating motif: 36 of 49
+2021-03-01 08:00:42,359 -Evaluating motif: 37 of 49
+2021-03-01 08:00:48,150 -Evaluating motif: 38 of 49
+2021-03-01 08:00:54,575 -Evaluating motif: 39 of 49
+2021-03-01 08:01:04,763 -Evaluating motif: 40 of 49
+2021-03-01 08:01:11,946 -Evaluating motif: 41 of 49
+2021-03-01 08:01:18,334 -Evaluating motif: 42 of 49
+2021-03-01 08:01:31,971 -Evaluating motif: 43 of 49
+2021-03-01 08:01:43,033 -Evaluating motif: 44 of 49
+2021-03-01 08:01:46,337 -Evaluating motif: 45 of 49
+2021-03-01 08:01:50,756 -Evaluating motif: 46 of 49
+2021-03-01 08:02:01,414 -Evaluating motif: 47 of 49
+2021-03-01 08:02:21,217 -Evaluating motif: 48 of 49
+2021-03-01 08:02:32,349 -Evaluating motif: 49 of 49
+2021-03-01 08:02:38,380 -Selected conserved motifs:
+2021-03-01 08:02:38,381 -Selected conserved motifs:
+2021-03-01 08:02:38,383 -Begining with Aptamer Design by Directed Evolution
+2021-03-01 08:02:38,385 -Defining evaluation equation
+2021-03-01 08:02:38,389 -Evaluation equation defined
+2021-03-01 08:02:38,392 -Generating starting pool
+2021-03-01 08:02:39,626 -Starting pool generated
+2021-03-01 08:02:39,631 -Starting Evolution
+2021-03-01 08:02:39,632 -Score: 0
+2021-03-01 08:02:39,633 -Current generation: 1 of 2
+2021-03-01 08:05:53,283 -Score: 0.3564936951250065
+2021-03-01 08:05:53,284 -Current generation: 2 of 2
+2021-03-01 08:12:15,797 -Creating output files
