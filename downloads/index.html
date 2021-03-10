@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AptaDesign</title>
+    <link rel='icon' type='image/png' href='images/logo.png'/>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Open+Sans&family=Roboto:ital,wght@1,700&family=Ubuntu:ital,wght@1,700&display=swap" rel="stylesheet">
+  </head>
+<body>
+  <script src="js/jquery-2.1.4.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/ajax-utils.js"></script>
+  <script src="js/script.js"></script>
+  <header>
+    <nav id="header-nav" class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../index.html" id='nav-img' class="pull-left visible-md visible-lg">
+            <div id="logo-img" alt="Logo image"></div>
+          </a>
+
+          <div class="navbar-brand">
+            <a href="../index.html"><h1 id='nav-title'>AptaDesign</h1></a>
+          </div>
+
+          <button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="collapsable-nav" class="collapse navbar-collapse">
+           <ul id="nav-list" class="nav navbar-nav navbar-right">
+            <li>
+              <a href="../index.html" id='Button'>
+                <span class="glyphicon glyphicon-home"></span> <br class="hidden-xs">Home</a>
+            </li>
+            <li>
+              <a href="/documentation/index.html" id='Button'>
+                <span class="glyphicon glyphicon-book"></span><br class="hidden-xs"> Documentation</a>
+            </li>
+            <li>
+              <a href="/tutorials/index.html" id='Button'>
+                <span class="glyphicon glyphicon-education"></span><br class="hidden-xs"> Tutorials</a>
+            </li>
+            <li class="active">
+              <a href="/downloads/index.html" id='Button'>
+                <span class="glyphicon glyphicon-cloud-download"></span><br class="hidden-xs">Downloads</a>
+            </li>
+          </ul><!-- #nav-list -->
+        </div><!-- .collapse .navbar-collapse -->
+      </div><!-- .container -->
+    </nav><!-- #header-nav -->
+  </header>
+
+  <h1 id='main-title' class='text-center'>Downloads</h1>
+  <div id="main-content" class="container">
+    <div id='titles' class='row'>
+      <div class='col-md-6'>
+        <div id='compiled' class='single-element'>
+          <h3 id='sec-title' class='text-center'>Compiled Distributions<br>(Recommended)</h3>
+          <p class='text-justify'>Pre-compiled software distributions.  These distributions are ready-to-run and reaquiere minimal installation.  Therfore, they are recommended for rapid run. They don't require any external software (only the software that comes with each distribution).  Download the apropiate distribution for your operative system and read the tutorials for installing and running the compiled software distributions.
+          </p>
+          <div id='comp'>
+            <a href="https://github.com/JuanCRueda/AptaDesign/archive/v1.0.3.zip" id='logo-box' class="pull-left">
+            <div id="windows-logo" class='logo' alt="Windows logo"></div>
+            </a>
+            <p class='text-center'>AptaDesign v1.0.3 for Windows</p>
+            <a href="https://github.com/JuanCRueda/AptaDesign/archive/v1.0.3.zip" id='logo-box' class="pull-left">
+            <div id="page-button">Download</div>
+            </a>
+            <a href="/tutorials/windows-comp/index.html" id='logo-box' class="pull-left">
+            <div id="page-button">Tutorials</div>
+            </a>
+          </div>
+          <div id='comp'>
+            <a href="https://github.com/JuanCRueda/AptaDesign/archive/v1.0.1-l.tar.gz" id='logo-box' class="pull-left">
+            <div id="linux-logo" class='logo' alt="Linux image"></div>
+            </a>
+            <p class='text-center'>AptaDesign v1.0.1-l for Linux</p>
+            <a href="https://github.com/JuanCRueda/AptaDesign/archive/v1.0.1-l.tar.gz" id='logo-box' class="pull-left">
+            <div id="page-button">Download</div>
+            </a>
+            <a href="/tutorials/linux-comp/index.html"  id='logo-box'class="pull-left">
+            <div id="page-button">Tutorials</div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class='col-md-6'>
+        <div id='source' class='single-element'>
+          <h3 id='sec-title' class='text-center'>Source Code</h3>
+          <p class='text-justify'>Raw Python source code for AptaDesign. Requires Python 3.5 or superior (Python 3.8 is recommended) and the installation of the modules described in requirements.txt within the download bundle. Each download bundle conatins the uncompiled Python source code optimized for each of the supported operative systems. This version allows for easy modification and cross-software integration. <br> Also, check the project's Github repository.
+          </p>
+          <div id='sorce-code'>
+            <a href="https://github.com/JuanCRueda/AptaDesign" id='logo-box' class="pull-left">
+            <div id="github-logo" class='logo' alt="Github logo"></div>
+            </a>
+            <p class='text-center'>Github repository</p>
+            <a href="https://github.com/JuanCRueda/AptaDesign" target='_blank' id='logo-box' class="pull-left">
+            <div id="page-button">Go to the Github Repository</div>
+            </a>
+          </div>
+          <div id='sorce-code'>
+            <a href="https://github.com/JuanCRueda/AptaDesign/archive/src_win.zip" id='logo-box' class="pull-left">
+            <div id="windows-logo" class='logo' alt="Windows logo"></div>
+            </a>
+            <p class='text-center'>Source Code for Windows</p>
+            <a href="https://github.com/JuanCRueda/AptaDesign/archive/src_win.zip" id='logo-box' class="pull-left">
+            <div id="page-button">Download</div>
+            </a>
+            <a href="/tutorials/windows-src/index.html" id='logo-box' class="pull-left">
+            <div id="page-button">Tutorials</div>
+            </a>
+          </div>
+          <div id='sorce-code'>
+            <a href="https://github.com/JuanCRueda/AptaDesign/archive/src_linux.zip" id='logo-box' class="pull-left">
+            <div id="linux-logo" class='logo' alt="Linux image"></div>
+            </a>
+            <p class='text-center'>Source Code for Linux</p>
+            <a href="https://github.com/JuanCRueda/AptaDesign/archive/src_linux.zip" id='logo-box' class="pull-left">
+            <div id="page-button">Download</div>
+            </a>
+            <a href="/tutorials/linux-src/index.html"  id='logo-box'class="pull-left">
+            <div id="page-button">Tutorials</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="panel-footer">
+    <div class="container">
+      <div class="row">
+        <section id="cite" class="col-sm-6">
+          <span id='cite-title'>Please cite:</span><br>
+          <p id='citation'>Rueda-Silva J.C. (2021)</p>
+          <hr class="visible-xs">
+        </section>
+        <section id="contact" class="col-sm-6">
+          <span id='contact-title'>Contact:</span><br>
+          <a href='mailto:jcarlosruedasilva@gmail.com' id='email'>jcarlosruedasilva@gmail.com</a>
+        </section>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

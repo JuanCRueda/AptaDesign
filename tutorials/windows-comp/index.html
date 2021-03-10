@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AptaDesign</title>
+    <link rel='icon' type='image/png' href='images/logo.png'/>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Open+Sans&family=Roboto:ital,wght@1,700&family=Ubuntu:ital,wght@1,700&display=swap" rel="stylesheet">
+  </head>
+<body>
+  <script src="js/jquery-2.1.4.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/ajax-utils.js"></script>
+  <script src="js/script.js"></script>
+  <header>
+    <nav id="header-nav" class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../../index.html" id='nav-img' class="pull-left visible-md visible-lg">
+            <div id="logo-img" alt="Logo image"></div>
+          </a>
+
+          <div class="navbar-brand">
+            <a href="../../index.html"><h1 id='nav-title'>AptaDesign</h1></a>
+          </div>
+
+          <button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="collapsable-nav" class="collapse navbar-collapse">
+           <ul id="nav-list" class="nav navbar-nav navbar-right">
+            <li>
+              <a href="/index.html" id='Button'>
+                <span class="glyphicon glyphicon-home"></span> <br class="hidden-xs">Home</a>
+            </li>
+            <li>
+              <a href="/documentation/index.html" id='Button'>
+                <span class="glyphicon glyphicon-book"></span><br class="hidden-xs"> Documentation</a>
+            </li>
+            <li class="active">
+              <a href="/tutorials/index.html" id='Button'>
+                <span class="glyphicon glyphicon-education"></span><br class="hidden-xs"> Tutorials</a>
+            </li>
+            <li>
+              <a href="/downloads/index.html" id='Button'>
+                <span class="glyphicon glyphicon-cloud-download"></span><br class="hidden-xs">Downloads</a>
+            </li>
+          </ul><!-- #nav-list -->
+        </div><!-- .collapse .navbar-collapse -->
+      </div><!-- .container -->
+    </nav><!-- #header-nav -->
+  </header>
+
+  <h1 id='main-title' class='text-center'>How to use the compiled distributions for Windows?</h1>
+  <div id="main-content" class="container">
+    <div id='titles' class='row'>
+      <div class='col-md-6'>
+        <div id='contents' class='single-element'>
+          <h3 id='sec-title' class='text-center'>Contents</h3>
+          <ul>
+            <li>
+              <a href='#Installation'>1. Installation</a>
+              <br>
+              <ul>
+                <li><a href='#download'>1.1. Contents of the download bundle</a></li>
+                <li><a href='#install'>1.2. Installing the software</a></li>
+                <li><a href='#test'>1.3. Testing the installation</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href='#Usage'>2. Usage</a>
+              <br>
+              <ul>
+              <li><a href='#interface'>2.1. Using the interface mode</a></li>
+              <li><a href='#CLI'>2.2. Using the command line tool mode</a>
+                <br>
+                <ul><li><a href='#options'>2.2.1. Options and Arguments</a></li></ul>
+              </li>
+              <li><a href='#output'>2.3. Output</a>
+            </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class='col-xs-12'>
+        <div id='Installation' class='single-element'>
+          <h3 id='sec-title' class='text-center'>Installaton</h3>
+          <div id='download'>
+            <span class='subtitle'>1.1. Contents of the download bundle</span>
+            <p>
+              To begin please download the <a href='/downloads'>compiled distribution</a>. The distribution contains the following files, which will be required during the installation and for the succeful run of the program.  The files are:<br>
+              <ul>
+                <li><b>AptaDesign.exe and build components:</b> The compiled software tool and external utility files required for te execution of the program.</li>
+                <li><b>Examples folder: </b>a series of premade files that will be used for testing the installation<ul>
+                  <li><b>Fc_Aptamers.fasta:</b> A fasta file containing the compilation of aptamers previously reported in literature specific for the Fc stem of mammalian IgG. This file contains the aptamers reported by <a href='https://doi.org/10.1016/S1872-2040(20)60016-0' target='_blank'>Yang <i>et al.</i> (2020)</a>, <a href='https://dx.doi.org/10.1261%2Frna.1005808' target='_blank'>Miyakawa <i>et al.</i> (2008)</a>, <a href='https://doi.org/10.3390/ijms21165748' target='_blank'>Bognár & Gyurcsányi (2020)</a>, <a href='https://doi.org/10.1016/j.cplett.2019.136854' target='_blank'>Yoshida <i>et al.</i> (2019)</a> and <a href='https://doi.org/10.4238/2013.april.25.11' target='_blank'>Ma <i>et al.</i> (2013)</a>.</li>
+                  <li><b>HRP_DNAzyne.txt:</b> The seuqnece of a HRP-mimicking DNAzyme, previously reported by <a href='https://doi.org/10.1007/10_2017_37' target='_blank'>Alizadeh <i>et al.</i> (2020)</a>.</li></ul>
+                </li>
+                <li><b>ViennaRNA_Package:</b> A partial installation of the <a href='https://www.tbi.univie.ac.at/RNA/' target='_blank'>ViennaRNA Package</a> conatining the minumum files required for the use of the compiled version of RNAfold, which it is used by this software for MFE calculation and secondary structure predeiction.</li>
+                <li><b>RNAhybrid-2.1.2:</b> A partial installation of the compiled <a href='https://bibiserv.cebitec.uni-bielefeld.de/rnahybrid' target='_blank'>RNAhybrid</a> software tool. It is used by this software tool for hybridation MFE calculation.</li>
+                <li><b>LICENSE:</b> License information for this sofwtare tool. This software tool is licensed under the MIT license.</li>
+                <li><b>README.md:</b> Short description of this software tool with instructions on how to use it.</li>
+              </ul>
+            </p>
+          </div>
+          <br>
+          <div id='install'>
+            <span class='subtitle'>1.2. Installing the software</span>
+            <p>Extract the entire contents of the downloaded zip folder, it should take around 15 minutes.</p>
+            <p>After this the installation should be ready.</p>
+          </div>
+          <br>
+          <div id='test'>
+            <span class='subtitle'>1.3. Testing the installation</span>
+            <p>In orther to test that the installation was succefull, in a command line within the folder conatining the downloaded files, please run the following command:</p>
+            <div class='code-block'>&gt AptaDesign --help</div>
+            <p>Which should generate an output starting with:</p>
+            <div class='code-block'>Usage: AptaDesign [OPTIONS]<br>
+              <br>
+              AptaDesign v.1.0.4 Aptamer design in silico based on directed evolution and previous data. With possibility for creating aptamers capable of hybridizing specific sequences.<br>
+              <br>
+              USAGE: AptaDesign.exe [OPTIONS]* *Note: if no option are provided, the programs starts in its UI mode<br>
+              ...
+            </div>
+            <p>Also test that the utilities are succefully installed by typing the following command:</p>
+            <div class='code-block'>&gt AptaDesign -s .\examples\Fc_Aptamers.fasta -g 2 -t GTGGGGCATTGTGGGTGGGTGTGG -ph <b>&ltYour desired output path&gt</b> -n test.1</div>
+            <p class='note'>Repleace <b>&ltYour desired output path&gt</b> with the path to the directory where you want to save the output.</p><br>
+            <p>Which should output after a few seconds something similar to:</p>
+            <div class='code-block'>Welcome to AptaDesign v1.0.4<br>------------------------------------------</div>
+            <p>And after around 30 minutes:</p>
+            <div class='code-block'>Output located in: &ltYour path&gt\\test.1<br>------------------------------------------<br>Thank you for using AptaDesign</div>
+            <p>And in your output directory you should find the following 3 files with contents similar as the following:</p>
+            <ul>
+              <li><b>test.1.log</b>
+                <div id='log-img'></div></li>
+              <li><b>test.1_results.xlsx</b>
+                <div id='xlsx-img'></div></li>
+              <li><b>test.1_fig.png</b>
+                <div id='fig-img'></div></li>
+            </ul>
+            <p>If these tests shows any errors please go through the installation again.</p>
+          </div>
+          <br>
+        </div>
+      </div>
+      <div class='col-xs-12'>
+        <div id='Usage' class='single-element'>
+          <h3 id='sec-title' class='text-center'>Usage</h3>
+          <div id='interface'>
+            <span class='subtitle'>2.1. Using the interface mode</span>
+            <p>In order to start the software in the User Interface mode, type the following command:</p>
+            <div class='code-block'>&gt AptaDesign</div>
+            <p>And follow the instructions as they are promted the terminal. It will ask for the input fasta or fastq file, number of motifs to use for the evaluation, pool size (number of sequences generated per cycle) to use, number of generations (cycles) to simulate, number of candidates (number of sequences selected per cycle), number of generations without score increase to stop the program, hybridation target (if desired), the path to save the output, title of the project and wether to generate graphs.  If you enter to Advanced Options you can enter the minumum length of the aptamers, the number of generations per hyperdiverse period, the maximum number of consecutive hyperdiverse periods before stopping the program and the minimum score that will cause the program to stop.</p>
+          </div>
+          <br>
+          <div id='CLI'>
+            <span class='subtitle'>2.2. Using the command line tool mode</span>
+            <p>In order to start the software in the function mode, type the following command:</p>
+            <div class='code-block'>&gt AptaDesign <b>[OPTIONS]</b></div>
+            <p>With the options shown bellow.</p>
+            <p class='note'><b>Note:</b> For the options not marked as required, if no value is provided, the default value will be used.</p>
+            <div class='option-box' id='options'>
+              <div class='options-title'>Options for the function mode</div>
+              <ul>
+                <li><b>-s, --source </b>:<i>(required)</i> The path to the fasta or fastq file containing the sequences from which the algorithm will extract the motifs.</li>
+                <li><b>-m, --motifs </b>: The number of motifs to be used for the evaluation. <i>(default: 8)</i></li>
+                <li><b>-t, --target </b>:<i>(optional)</i> The sequence of a hybridation oligonucleotide target if desired.</li>
+                <li><b>-p, --pool </b>: Number of sequences to generate per cycle. <i>(default: 100)</i></li>
+                <li><b>-g, --gens </b>: Number of cycles to simulate. <i>(default: 1000)</i></li>
+                <li><b>-c, --candidates </b>: Number of sequences to select after each cycle. <i>(default: 10)</i></li>
+                <li><b>-l, --length </b>: Minimum length of the apatmers. <i>(default: 10)</i></li>
+                <li><b>-hg, --hyperd_gens</b>: Number of subgenerations per hyperdiverse period. <i>(default: 3)</i></li>
+                <li><b>-ch, --cons_hyperd</b>: Maximum number of consicutive hyperdiverse periods. <i>(default: 10)</i></li>
+                <li><b>-cs, --cons_score</b>: Maximum number of consecutive generations without score improvement before stopping the program. <i>(default: 10)</i></li>
+                <li><b>-gp, --graphs </b>: ('T'/'F') Generate graphs for the project. <i>(default: 'True')</i></li>
+                <li><b>-bc, --break_score </b>: Minimum score that will cause the program to stop. <i>(default: 0.99)</i></li>
+                <li><b>-ph, --path </b>:<i>(required)</i> Path to save the output of the project.</li>
+                <li><b>-n, --name </b>:<i>(required)</i> Name of the project. </li>
+                <li><b>--help </b>: Open the help page.</li>
+              </ul>
+            </div>
+          </div>
+          <br>
+          <div id='output'>
+            <span class='subtitle'>2.3. Output</span>
+            <p>After the succeful run of the algorithm, a folder with the name of the project is created on the given output directory. This folder contains the following files</p>
+            <ul>
+              <li><b>A log file:</b> Containing messages generated during the execution with timestamps.</li>
+              <li><b>A png image:</b> A graph of each generation vs. maximum score acgieved.</li>
+              <li><b>A xlsx file:</b> Containing the final selected candidates, their score and the values used for the calculation of the score</li>
+            </ul>
+            <p>For a more detailed description of the output files, please consult the <a href='/documentation/index.html#output'>documentation</a>.</p>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="panel-footer">
+    <div class="container">
+      <div class="row">
+        <section id="cite" class="col-sm-6">
+          <span id='cite-title'>Please cite:</span><br>
+          <p id='citation'>Rueda-Silva J.C. (2021)</p>
+          <hr class="visible-xs">
+        </section>
+        <section id="contact" class="col-sm-6">
+          <span id='contact-title'>Contact:</span><br>
+          <a href='mailto:jcarlosruedasilva@gmail.com' id='email'>jcarlosruedasilva@gmail.com</a>
+        </section>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

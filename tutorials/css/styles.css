@@ -1,0 +1,149 @@
+*{margin: 0;}
+
+body {
+  font-size: 14px;
+  color:#000;
+  background-color: #d1f0ed;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1{font-size: 200%;
+	font-family: 'Roboto', sans-serif;}
+
+h3{font-size: 150%;
+	font-weight: bold;}
+
+#logo-img {
+  background: url('/images/logo.png') no-repeat;
+  background-size: 100%;
+  width: 150px;
+  height: 85px;
+  margin: -15px 5px 0px 0px;
+}
+
+
+#header-nav {text-align: center;
+	background-color: #62B9BD;
+	position: relative;
+	border-radius: 0;
+  	border: 0;}
+
+ #introduction{}
+
+.navbar-brand{padding-top: 0px;}
+
+#nav-img{margin-top: 0px;
+  	margin-bottom: 0px;
+  	line-height: .75;
+  	}
+
+ #nav-title{color: #005206;
+ 	font-weight: bold;
+ 	font-family: 'Ubuntu', sans-serif;}
+
+.active>a#Button{
+	background-color: #38696B;
+	color: #fff;}
+a#Button{color: #005206;}
+
+.single-element{margin: 10px 10px 10px;
+	padding: 10px;
+	background-color:  #E5FEFC;
+	overflow: hidden;
+	border-radius: 25px;
+	}
+
+#cite-title{font-weight: bold;
+	font-size: 90%}
+#citation{font-size: 70%}
+
+#contact{text-align: right;}
+#contact-title{font-weight: bold;
+	font-size: 80%}
+#email{font-size: 70%}
+
+#AptaDesign-logo{background: url('/images/logo.png') no-repeat;
+  background-size: 100%;
+  width: 250px;
+  height: 150px;
+  margin: auto;}
+
+#Python-logo{background: url('../images/python.png') no-repeat;
+  background-size: 100%;
+  width: 150px;
+  height: 150px;
+  margin: auto;}
+
+#compiled{text-align: justify;}
+
+#comp{width: 45%;
+	text-align: center;
+	border-radius: 5px;
+	background: #d1f0ed;
+	border: 1px solid #62B9BD;
+	float: left;
+	padding: 10px;
+	display: inline-block;
+	margin: 10px 2.5%;
+	}
+
+#sorce-code{width: 30%;
+	text-align: center;
+	border-radius: 5px;
+	background: #d1f0ed;
+	border: 1px solid #62B9BD;
+	float: left;
+	padding: 10px;
+	display: inline-block;
+	margin: 10px 1.5%;
+	}
+
+#logo-box{width: 100%;}
+
+div.logo{
+  	width: 100px;
+  	height: 100px;
+  	background-size: 100%;
+  	margin: auto;
+
+}
+
+
+#windows-logo{
+	background: url('../images/Windows.png') no-repeat;
+	background-size: 100%;
+}
+
+#linux-logo{
+	background: url('../images/Linux.png') no-repeat;
+	background-size: 80%;
+}
+
+#github-logo{
+	background: url('../images/github.png') no-repeat;
+	background-size: 90%;
+}
+
+#page-button{
+	background-color: #1D7A7D;
+	color: #fff;
+	text-align: center;
+	font-weight: bold;
+	border-radius: 3px;
+	width: 95%;
+	margin: 0px auto 10px auto;
+}
+
+@media(max-width: 768px){
+#nav-title{font-size: 100%}
+
+  #collapsable-nav a { /* Collapsed nav menu text */
+    font-size: 1.2em;
+  }
+  #collapsable-nav a span { /* Collapsed nav menu glyph */
+    font-size: 1em;
+    margin-right: 5px;
+  }
+  #cite{text-align: center;}
+  #contact{text-align: center;}
+}

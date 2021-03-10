@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AptaDesign</title>
+    <link rel='icon' type='image/png' href='images/logo.png'/>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Open+Sans&family=Roboto:ital,wght@1,700&family=Ubuntu:ital,wght@1,700&display=swap" rel="stylesheet">
+  </head>
+<body>
+  <script src="js/jquery-2.1.4.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/ajax-utils.js"></script>
+  <script src="js/script.js"></script>
+  <header>
+    <nav id="header-nav" class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="index.html" id='nav-img' class="pull-left visible-md visible-lg">
+            <div id="logo-img" alt="Logo image"></div>
+          </a>
+
+          <div class="navbar-brand">
+            <a href="index.html"><h1 id='nav-title'>AptaDesign</h1></a>
+          </div>
+
+          <button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="collapsable-nav" class="collapse navbar-collapse">
+           <ul id="nav-list" class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="index.html" id='Button'>
+                <span class="glyphicon glyphicon-home"></span> <br class="hidden-xs">Home</a>
+            </li>
+            <li>
+              <a href="/documentation/index.html" id='Button'>
+                <span class="glyphicon glyphicon-book"></span><br class="hidden-xs"> Documentation</a>
+            </li>
+            <li>
+              <a href="/tutorials/index.html" id='Button'>
+                <span class="glyphicon glyphicon-education"></span><br class="hidden-xs"> Tutorials</a>
+            </li>
+            <li>
+              <a href="/downloads/index.html" id='Button'>
+                <span class="glyphicon glyphicon-cloud-download"></span><br class="hidden-xs">Downloads</a>
+            </li>
+          </ul><!-- #nav-list -->
+        </div><!-- .collapse .navbar-collapse -->
+      </div><!-- .container -->
+    </nav><!-- #header-nav -->
+  </header>
+
+  <h1 id='main-title' class='text-center'>AptaDesign</h1>
+  <div id="main-content" class="container">
+    <div id='titles' class='row'>
+      <div class='col-xs-12'>
+        <div id='introduction' class='single-element'>
+          <h3 id='sec-title' class='text-center'>Introduction</h3>
+          <p class='text-justify'>AptaDesign is a python-based software tool for <i>in silico</i> aptamer design based on motif extraction and directed evolution. This software tool helps with the creation of aptamers targeting a specific molecule (based on previous data available) with the possibility of also hybridizing a specific oligonucleotide sequence for their use in genetic circuits.<br>
+          This algorithm requires a fasta or fastq file containing previously experimentally-demonstrated aptamer sequences targeting the desired molecule or a similar molecule. From this file a given number of conserved motifs is extracted and used for evaluation of the directed evolution procedure.<br>
+          In the directed evolution part of the algorithm, for each generation random mutations are generated, which are then evaluated using the Edit Distance with the conserved motifs, the MFE of the secondary structure and the hybridation MFE (if required). The evolution continues until any of the stop conditions are reached.<br>
+          For more information consult <a href='/documentation/index.html'>documentation</a>.<br>
+          Go to <a href='/downloads/index.html'>downloads</a>.<br>
+          Read or watch the <a href='/tutorials/index.html'>tutorials</a>.
+          </p>
+          <div id='reference-box'>
+            <span id='reference-title'>
+              If you use this sotware tool for a publication, please cite:
+            </span>
+            <p id='reference-content'>
+              Rueda-Silva J.C. (2021)
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class='col-xs-12'>
+        <div id='updates' class='single-element'>
+          <h3 id='sec-title' class='text-center'>Upadates</h3>
+          <ul>
+          <li>
+          <div id='news-box'>
+            <p id='news-title' class='text-left'>23.02.2021: Updates!</p>
+            <p id='news-content'>Here will appear any upadates made to the software</p>
+            <a href="#updates" id='news-return'>Back to the top</a>
+          </div></li>
+        </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="panel-footer">
+    <div class="container">
+      <div class="row">
+        <section id="cite" class="col-sm-6">
+          <span id='cite-title'>Please cite:</span><br>
+          <p id='citation'>Rueda-Silva J.C. (2021)</p>
+          <hr class="visible-xs">
+        </section>
+        <section id="contact" class="col-sm-6">
+          <span id='contact-title'>Contact:</span><br>
+          <a href='mailto:jcarlosruedasilva@gmail.com' id='email'>jcarlosruedasilva@gmail.com</a>
+        </section>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

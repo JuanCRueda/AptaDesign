@@ -1,0 +1,103 @@
+*{margin: 0;}
+
+body {
+  font-size: 14px;
+  color:#000;
+  background-color: #d1f0ed;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1{font-size: 200%;
+	font-family: 'Roboto', sans-serif;}
+
+h3{font-size: 150%;
+	font-weight: bold;}
+
+#logo-img {
+  background: url('/images/logo.png') no-repeat;
+  background-size: 100%;
+  width: 150px;
+  height: 85px;
+  margin: -15px 5px 0px 0px;
+}
+
+
+#header-nav {text-align: center;
+	background-color: #62B9BD;
+	position: relative;
+	border-radius: 0;
+  	border: 0;}
+
+ #introduction{}
+
+.navbar-brand{padding-top: 0px;}
+
+#nav-img{margin-top: 0px;
+  	margin-bottom: 0px;
+  	line-height: .75;
+  	}
+
+ #nav-title{color: #005206;
+ 	font-weight: bold;
+ 	font-family: 'Ubuntu', sans-serif;}
+
+.active>a#Button{
+	background-color: #38696B;
+	color: #fff;}
+a#Button{color: #005206;}
+
+.single-element{margin: 10px 10px 10px;
+	padding: 10px;
+	background-color:  #E5FEFC;
+	overflow: hidden;
+	border-radius: 25px;}
+
+#cite-title{font-weight: bold;
+	font-size: 90%}
+#citation{font-size: 70%}
+
+#contact{text-align: right;}
+#contact-title{font-weight: bold;
+	font-size: 80%}
+#email{font-size: 70%}
+
+#news-box{background-color: #BABDBD;
+	border: solid #000;
+	border-radius: 10px;}
+
+#news-title{font-weight: bold;}
+
+#news-content{text-align: justify;}
+
+#news-return{text-align: center;
+	font-weight: bold;}
+
+#reference-box{background-color: #BABDBD;
+	border: solid #000;
+	width: 75%;
+	margin: auto;
+	border-radius: 10px;
+	}
+
+#reference-title{font-weight: bold;
+	background-color: #858585;
+	border-radius: 10px 0px 0px 0px;}
+
+#reference-content{
+	font-size: 80%;
+	text-align: justify;
+}
+
+@media(max-width: 768px){
+#nav-title{font-size: 100%}
+
+  #collapsable-nav a { /* Collapsed nav menu text */
+    font-size: 1.2em;
+  }
+  #collapsable-nav a span { /* Collapsed nav menu glyph */
+    font-size: 1em;
+    margin-right: 5px;
+  }
+  #cite{text-align: center;}
+  #contact{text-align: center;}
+}

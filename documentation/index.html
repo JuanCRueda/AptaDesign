@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AptaDesign</title>
+    <link rel='icon' type='image/png' href='images/logo.png'/>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Open+Sans&family=Roboto:ital,wght@1,700&family=Ubuntu:ital,wght@1,700&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+<body>
+  <script src="js/jquery-2.1.4.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/ajax-utils.js"></script>
+  <script src="js/script.js"></script>
+  <header>
+    <nav id="header-nav" class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../../index.html" id='nav-img' class="pull-left visible-md visible-lg">
+            <div id="logo-img" alt="Logo image"></div>
+          </a>
+
+          <div class="navbar-brand">
+            <a href="../../index.html"><h1 id='nav-title'>AptaDesign</h1></a>
+          </div>
+
+          <button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="collapsable-nav" class="collapse navbar-collapse">
+           <ul id="nav-list" class="nav navbar-nav navbar-right">
+            <li>
+              <a href="/index.html" id='Button'>
+                <span class="glyphicon glyphicon-home"></span> <br class="hidden-xs">Home</a>
+            </li>
+            <li class="active">
+              <a href="/documentation/index.html" id='Button'>
+                <span class="glyphicon glyphicon-book"></span><br class="hidden-xs"> Documentation</a>
+            </li>
+            <li>
+              <a href="/tutorials/index.html" id='Button'>
+                <span class="glyphicon glyphicon-education"></span><br class="hidden-xs"> Tutorials</a>
+            </li>
+            <li>
+              <a href="/downloads/index.html" id='Button'>
+                <span class="glyphicon glyphicon-cloud-download"></span><br class="hidden-xs">Downloads</a>
+            </li>
+          </ul><!-- #nav-list -->
+        </div><!-- .collapse .navbar-collapse -->
+      </div><!-- .container -->
+    </nav><!-- #header-nav -->
+  </header>
+
+  <h1 id='main-title' class='text-center'>Documentation</h1>
+  <div id="main-content" class="container">
+    <div id='titles' class='row'>
+      <div class='col-md-6'>
+        <div id='contents' class='single-element'>
+          <h3 id='sec-title' class='text-center'>Contents</h3>
+          <ul>
+            <li><a href='#introduction'>1. Introduction</a>
+              <ul><li><a href='#hybridation'>1.1 Working with hybridation targets</a></li>
+                <li><a href='#symbols'>1.2 Symbols and definitions</a></li>
+              </ul>
+            </li>
+            <li><a href='#EditD'>2. Position-aware Edit Distance</a></li>
+            <li><a href='#motif'>3. Motif selection</a><ul>
+              <li><a href='#m-extraction'>3.1 Motif extraction</a></li>
+              <li><a href='#m-evaluation'>3.2 Motif evaluation</a></li>
+              <li><a href='#m-selection'>3.3 Motif selection</a></li>
+            </ul></li>
+            <li><a href='#evaluation'>4. Evaluation equation definition</a>
+              <ul><li><a href='#ev-target'>4.1 Evaluation equation with hyrbidation target</a></li></ul>
+            </li>
+            <li><a href='#evolution'>5. <i>In silico</i> directed evolution simulation</a><ul>
+              <li><a href='#init-pool'>5.1 Initial pool generation</a></li>
+                <ul><li><a href='#init-pool-target'>5.1.1 Pool Initial pool generation with hyrbidation target</a></li></ul>
+              <li><a href='#pool-evaluation'>5.2 Pool evaluation</a></li>
+              <li><a href='#new-pool-gen'>5.3 New pool generation</a></li>
+              <li><a href='#mutation'>5.4 Mutations</a></li>
+            </ul></li>
+            <li><a href='#hyperdiverse'>6. Hyperdiverse periods</a></li>
+            <li><a href='#stop'>7. Stoppping the evolution</a><ul>
+              <li><a href='#gens'>7.1 Number of generations</a></li>
+              <li><a href='#score'>7.2 Score plateau</a></li>
+              <li><a href='#hyperdiverse-plateau'>7.3 Hyperdiverse plateau</a></li>
+              <li><a href='#b-score'>7.4 Break score</a></li>
+            </ul></li>
+            <li><a href='#output'>8. Output</a>
+              <ul>
+                <li><a href='#xslx'>8.1 .xslx file</a></li>
+                <li><a href='#log'>8.2 .log file</a></li>
+                <li><a href='#fig'>8.3 Figure</a></li>
+              </ul>
+            </li>
+            <li><a href='#license'>9. License and citation</a></li>
+            <li><a href='#eq-index'>10. Equation index</a></li>
+            <li><a href='#fig-index'>11. Figure index</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class='col-xs-12'>
+        <div id='introduction' class='single-element'>
+          <h3 id='sec-title' class='text-center'>1. Introduction</h3>
+          <p>
+            AptaDesign is a novel software tool for <i>in silico</i> RNA/DNA aptamer design. This software tool works by extracting motifs from a provided fasta/fastq file containing aptamers targetting the desired molecule or a similar molecule.  These motifs are then used for the generation of a unique evaluation equation. <br>
+            The process of novel aptamer design is based on directed evolution, in which during <i>n</i> generations or cycles, a pool of size <i>m</i> unque sequences is gerenated, which then aree evaluated using the aforementioned equation, the <i>k</i> number of candidates with the highest are selected to pass to the next generation <i>n+1</i>. The next pool is based upon the selected candidates, each candidate is keep inits identical shape in the <i>n+1</i> pool in order to prevent evolution retrogression and the rest of the pool is filled by introducing single <a href='#mutation'>mutations</a> to the selected candidate sequences and the selection process is repeated.<br>
+            This process repeats until one of the <a href='#stop'>stop conditions</a> is reached. During the evolution, the program may enter one or multiple <a href='#hyperdiverse'>hyperdiverse periods</a> to try to overcome local maxima.
+          </p>
+          <br>
+          <div id='hybridation'>
+            <span class='subtitle'>1.1 Working with hybridation targets</span>
+            <p>
+              This software tool allows for generating aptamers that hybridize through Watson-Crick base pairing to an specific nucletide sequence in the ausence of its target molecule. In order to indicate the program to generate aptamers to hybridate a specific nucleotide sequence, add it as hybridation target.  In this case, the evaluation equation is adjusted to include a term for the spontaniety of this hybridation.
+            </p>
+          </div>
+          <br>
+          <div id='symbols'>
+            <span class='subtitle'>1.2 Symbols and definitions</span>
+            <div class='option-box' id='options'>
+              <div class='options-title'>Symbols and definitions</div>
+              <ul>
+                <li><b><i>n</i></b>: Number of generations or cycles.</li>
+                <li><b><i>m</i></b>: Pool size.</li>
+                <li><b><i>k</i></b>: Number of candidates</li>
+                <li><b><i>Ed</i></b>: Edit Distance.</li>
+                <li><b><i>l</i></b>: Minimum length of the sequences to generate</li>
+                <li><b><i>nm</i></b>: Number of motifs to use for the evaluation equation</li>
+                <li><b><i>MFE</i></b>: Minimum Free Energy of a secondary structure (kcal/mol).</li>
+                <li><b><i>w</i></b>: Weight of a motif.</li>
+                <li><b><i>MFE<sub>[h]</sub></i></b>: Minimum Free Energy of the hybridation with the oligonucleotide target.</li>
+                <li><b><i>dMFE</i></b>: Absolute value of the difference between the MFE of the secondary structure and the MFE of the hybridation with the oligonucleotide target (kcal/mol)</li>
+                <li><b><i>n<sub>s</sub></i></b>: Integer number of sequences to generate from each candidate in order to create the new pool.</li>
+                <li><b><i>p</i></b>: Position of the nucleotide to mutate.</li>
+                <li><b><i>t</i></b>: Type of mutation to use.</li>
+                <li><b><i>h</i></b>: Number of subgenerations per hyperdiverse period.</li>
+                <li><b><i>m<sub>h</sub></i></b>: Size of the pool created after a hyperdiverse period.</li>
+                <li><b><i>n<sub>s</sub></i></b>: Maximum number of consecutive generations with the same maximum score</li>
+                <li><b><i>n<sub>h</sub></i></b>: Maximum number of consecutive hyperdiverse periods.</li>
+                <li><b><i>s</i></b>: Break Score.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='col-xs-12'>
+        <div id='EditD' class='single-element'>
+          <h3 id='sec-title' class='text-center'>2. Position-aware Edit Distance</h3>
+          <p>
+            For the purposes of this algorithm, a modification to the standard edit distance alignment algorithm was made, in order to warantee that the sequence and structure align to the same nucleotides. Unless otherwise specified, every time that "edit distance" is mentioned in this documentation it refers to this modified algorithm.<br>
+            In order to describe this modified algorithm, the sequence that it is being aligned will be called "<i>target</i>" and the sequence on which it is being aligned will bw called "<i>template</i>".  This modified algorithm begins with a standard edit distance alignment of the target sequence on the tamplate sequence, where appart from the edit distance, the position where it aligns is recorded. Then, with the structure of the tenplate sequence as string, a substring is obatined containing the strcuture of the nucleotides from the position where the sequence aligned to the nucleotide with position equal to the alinment position plus the length of the target sequence plus one.  Then the edit distance is calculated between the target structure and the substring structure.
+          </p>
+        </div>
+      </div>
+      <div class='col-xs-12'>
+        <div id='motif' class='single-element'>
+          <h3 id='sec-title' class='text-center'>3. Motif selection</h3>
+          <p>
+            The evaluation equation is based on motifs obtained from a provided fasta/fastq file contining the sequences of apatamers targetting the same (or similar) molecule that you are targetting.  In order to do so, a three step process is used: motif extraction, motif evaluation and motif selection.
+          </p>
+          <br>
+          <div id='m-extraction'>
+            <span class='subtitle'>3.1 Motif extraction</span>
+            <p>
+              In order to select motifs, the secondary structure of the aptamers provded in the fasta/fastq file is calculated using <a href='https://www.tbi.univie.ac.at/RNA/'>RNAfold</a>. The algorith then iterates over all generated secondary structures and all possible motifs are stored (both their sequence and structure) only once, if a motif is repeated a note is made with the number of times it appears.  For this program a possible motif is assumed to be at least a paired nucleotide with at least three un paired nucleotides either uostream or downstream. If there is one or two unpaired nucleotides surounded by unpaired nucleotides, these are assumed to be as part of the same motif.
+            </p>
+            <div id='motif-img'></div>
+            <div class='img-footer'><b>Fig. 1.</b> Example of motif extraction from an aptamer secondary structure, each bracket shows a possible motif that would be extracted. <i>IgG Fc stem apatamer reported by Yang et al., 2020</i>.</div>
+          </div>
+          <br>
+          <div id='m-evaluation'>
+            <span class='subtitle'>3.2 Motif evaluation</span>
+            <p>
+              The edit distance of each possible motif sequence and structire aligned to each of the aptamer sequences and structures reported in the fasta/fastq file.  A score is calculated between 0 and 1, where the higher the number the more likely is that the motif candidate is an actual motif as it aligns better to more aptamers.  For calculating this score, the edit distances for the sequences are added up, the same as the edit distances for the structures.  The numbers are the scaled between 0 and 1 by dividing 1 by 1 plus the additions of the edit distances. Finally, the average between the scaled edit distances is obtained. The equation is described bellow.
+            </p>
+            <p id='eq-1'>
+              $$score_{motif}=0.5\frac{1}{1+\sum Ed_{seq}}+0.5\frac{1}{1+\sum Ed_{structure}} \tag{1}$$
+            </p>
+          </div>
+          <br>
+          <div id='m-selection'>
+            <span class='subtitle'>3.3 Motif selection</span>
+            <p>
+              After all the scores for all the candidate motifs are calculated with equation (1) and with a defined number of motifs to use for the evaluation equation (<i>nm</i>).  The <i>nm</i> motifs with the highest scores are used for defining the evaluation equation. 
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class='col-xs-12'>
+        <div id='evaluation' class='single-element'>
+          <h3 id='sec-title' class='text-center'>4. Evaluation equation definition</h3>
+          <p>
+            In order to evaluate the candidates generated at each generation, a score between 0 and 1 has to be calculated, where a highest score represents a higher likelihood of a certian sequence to be an adecuate aptamer for the targeted molecule. The calculation of this score depends on the similitude between the sequence and the previously selected motifs (edit distance) and the minium free energy (MFE) of its secondary structure. The secondary structure and its MFE are calculated using <a href='https://www.tbi.univie.ac.at/RNA/'>RNAfold</a>.
+            <br>
+            The similitude has a greater contribution to the sequence score than the MFE of the secondary structure. Also, the contribution of each motif is dependent on its previously calculated score (equation 1). For this reason, a weight is calculated for each motif by dividing its score by the total sum of all scores as shown on equation 2.
+          </p>
+          <p id='eq-2'>
+            $$w_{i}=\frac{score_{i [motif]}}{\sum_{i=1}^{nm} score_{i [motif]}} \tag{2}$$
+          </p>
+          <p>
+            The edit distance score is calculated by scaling the edit distances between 0 and 1 by dividing 1 by 1 plus the edit distance. These are then multiplied by the weigth <i>w</i> corresponding to that motif.  Then, they are then added up, with the sequence edit distance adjusted by 0.4 and the structure edit distance by 0.6.  As shown at equation 3.
+          </p>
+          <p id='eq-3'>
+            $$score_{j [Ed]}=0.4\sum_{i=1}^{nm} (w_{i})(\frac{1}{1+Ed_{ij [seq]}})+0.6\sum_{i=1}^{nm} (w_{i})(\frac{1}{1+Ed_{ij [structure]}}) \tag{3}$$
+          </p>
+          <p>
+            Finally, the final score is calculated by adjusting the edit distance score and adding a term in order to include the MFE of the secundary structure, as shown on equation 4. This value is scaled between 0 and 1 by dividing it by the lowest secondary structure MFE from the provided fasta/fastq file (automatically calculated when the secondary structure is obtained). If the MFE is greater than 0, the value of this term is 0.
+          </p>
+          <p id='eq-4'>
+            $$score_{j}=0.85(score_{j [Ed]})+0.15(\frac{MFE_{j}}{MFE_{prev. examples}}) \tag{4}$$
+          </p>
+          <p><b>Note:</b> In the case that the MFE of the candidate sequence is lower than the minimum MFE from the input, this value is adjusted according to equation 5 before inputing it to equation 4, in order to prevent the scaled value to go out of bounds.
+          </p>
+          <p id='eq-5'>
+            $$MFE_{j [adj.]}=MFE_{j}-(MFE_{j}+\left|{MFE_{prev. examples}}\right|) \tag{5}$$
+          </p>
+          <br>
+          <div id='ev-target'>
+            <span class='subtitle'>4.1 Evaluation equation with hyrbidation target</span>
+            <p>
+              In the case that an hybridation target is provided, the score has to be adjusted to include a measurement of the spontaniety of the hybridation of the aptamer to its hybridation target. The MFE of the hybridation is calculated using <a href='https://bibiserv.cebitec.uni-bielefeld.de/rnahybrid'>RNAhybrid</a>. For this the value dMFE or the absolute value of the difference in MFE between the secondary structure and the hybridation with the oligonucleotide target is calculated according to equation 6. If the MFE of the hybridation is greater than 0 or greater than the MFE of the secondary structure, the value of dMFE is 0.
+            </p>
+            <p id='eq-6'>
+              $$dMFE=\left|{min(0,MFE_{j[h]}-MFE_{j})}\right| \tag{6}$$
+            </p>
+            <p>
+              This value is scaled between 0 and 1 by dividing it by the absolute value of the MFE of the hybridation between the target nucleotide with its reverse complimentary sequence (assuming that this will give the theoretical minimal MFE for a hybridation with that sequence). The score is then adjusted according to equation 7.
+            </p>
+            <p id='eq-7'>
+              $$score_{j [adj.]}=0.85(score_{j})+0.15(\frac{dMFE}{\left|{MFE_{rev. comp. [h]}}\right|}) \tag{7}$$
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class='col-xs-12'>
+        <div id='evolution' class='single-element'>
+          <h3 id='sec-title' class='text-center'>5. <i>In silico</i> directed evolution simulation</h3>
+          <p>
+            The main part of the algorithm is the aptamer design by <i>in silico</i> directed evolution. For this process, each generation or cycle consists on three steps: pool generation, pool evaluation and candidates selection. These candidates are then used for the generation of the next pool.
+          </p>
+          <br>
+          <div id='init-pool'>
+            <span class='subtitle'>5.1 Initial pool generation</span>
+            <p>
+              The initial pool is generated by creating <i>m</i> completely random sequences of <l>l</l> nucleotides, these sequences are generated completely <i>de novo</i> without using any templates.
+            </p>
+          </div>
+          <br>
+          <div id='init-pool-target'>
+            <span class='subtitle'>5.1.1 Pool Initial pool generation with hyrbidation target</span>
+            <p>
+              In order to speed up the directed evolution process, when an oligonucleotide target is provided, the initial pool contains the reverse complimentary of this target sequence plus <i>m-1</i> copies of the reverse complimentary with one random mutation.
+            </p>
+          </div>
+          <br>
+          <div id='pool-evaluation'>
+            <span class='subtitle'>5.2 Pool evaluation</span>
+            <p>
+              Each of the generated sequences is evaluated according to either equation 4 or 7, and the scores stored. The the sequences with highest <i>k</i> scores are selected and they are passed to the next generation to generate the next pool.
+            </p>
+          </div>
+          <br>
+          <div id='new-pool-gen'>
+            <span class='subtitle'>5.3 New pool generation</span>
+            <p>
+              A <i>n<sub>s</sub></i> integer number is defined according to equation 8. Each of the candidates sequences are added to the new pool without any mutation in order to prevent a retrocession in the evolution process. To fill out the rest of the pool, for each candidate, <i>n<sub>s</sub></i> unique sequences are added with a single nucleotide unique random mutation.
+            </p>
+            <p id='eq-8'>
+              $$n_{s}=\left\lfloor{\frac{m}{k}}\right\rfloor-1 \tag{8}$$
+            </p>
+            <p>
+              It is important to note, that the algorithm has safeguards in place to prevent that the sequences within the pool are repeated and to avoid them to go bellow the minimum length <i>l</i>.
+            </p>
+          </div>
+          <br>
+          <div id='mutation'>
+            <span class='subtitle'>5.4 Mutations</span>
+            <p>
+              For the creation of each successive pool, single nucleotide mutations are added to the candidate sequences. For each single nucleotide mutation two random integers are generated: the integer <i>p</i> between 0 and the length of the sequence to mutate indicates the position of the nulceotide to mutate and <i>t</i> between 0 and 2 indicates the type of mutation to perform. If the value of <i>t</i> is 0 the nucleotide at the position <i>p</i> is deleted, if <i>t</i> is 1 a random nucleotide is inserted at the position <i>p</i>, and if <i>t</i> is 2 the nucleotide at the position <i>p</i> is replaced to another random nucleotide.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class='col-xs-12'>
+        <div id='hyperdiverse' class='single-element'>
+          <h3 id='sec-title' class='text-center'>6. Hyperdiverse periods</h3>
+          <p>
+            As any optimization problem, this algorithm may run into local maxima, in order to try to overcome these maxima, the algorithm has implemented hyperdiverse periods. The algorothm deviates to an hyperdiverse period if the selected candidates for the generation <i>n</i> are at least 70% identical to the candidates of the generation <i>n-1</i>.
+            <br>
+            During each hyoerdiverse period, <i>h</i> subgenerations are simulated without evaluation nor selection, meaning that each sequence generated for the pool is used as template for the next pool, increasing the diversity of the final pool, same as its size (described by equation 9). Creating a final pool of <i>m<sub>h</sub></i> unique sequences, in which each sequence has a maximum of <i>h</i> single nucleotide mutations.  This increase in diversity is aimed at helping the algorithm overcome local maxima.
+          </p>
+          <p id='eq-9'>
+            $$m_{h}=k(n_{s})(h) \tag{9}$$
+          </p>
+          <p>
+            After the final pool is generated, two evaluation periods are preformed according to either equation 4 or 7.  After the first selection period <i>m</i> candidates are selected, from which the final <i>k</i> candidates are selected after the second selection period.
+            <br>
+            It is important to note that these hyperdverse periods are computational resource intensive. So, whilst increasing the number <i>h</i> increases the likelihood of overcoming a local maxima, it also increases the computational resources needed, thus, incrementing greatly the execution time of the algorithm.
+          </p>
+        </div>
+      </div>
+      <div class='col-xs-12'>
+        <div id='stop' class='single-element'>
+          <h3 id='sec-title' class='text-center'>7. Stoppping the evolution</h3>
+          <p>
+            There are for ways in which the algorirthm may stop the evolution: by number of generations, by score plateau, by hyperdiverse plateau or by break score.
+          </p>
+          <br>
+          <div id='gens'>
+            <span class='subtitle'>7.1 Number of generations</span>
+            <p>
+              If the current generation <i>n<sub>i</sub></i> is equal to <i>n</i> this generation will be the last generation to be simulated, and the candidates selected from it instead of being used for creating a new pool, they will be outputed as the final aptamers selected from this evolution process and stored at the output <i>.xlsx</i> file.
+            </p>
+          </div>
+          <br>
+          <div id='score'>
+            <span class='subtitle'>7.2 Score plateau</span>
+            <p>
+              If the current generation is the <i>n<sub>s</sub>+1</i> consecutive generation with the same maximum score for the selected candidates, it is considered that the algoritm has reached a maximum with low possibilities of overcoming.  Therefore, this is asumed to be the maximum score to be reached by the evolution, so it is stopped and the candidates selected for this generation are store as the output. During testing, this was by far the most common stop condition reached.
+              <br>
+              It is important to note, that whilst increasing the value <i>n<sub>s</sub></i> increases the tolerance of the algorithm to local maxima, as it increases the time that it spends trying to overcome them. But this also increases the execution time and the computational resources needed.
+            </p>
+          </div>
+          <br>
+          <div id='hyperdiverse-plateau'>
+            <span class='subtitle'>7.3 Hyperdiverse plateau</span>
+            <p>
+              If the current generation fullfils the condition to enter a hyperdiverse plateau and it is the <i>n<sub>h</sub></i> consecutive generation to do so, it is assumed that the algorithm is in a maximum with low possibilities of overcoming, and contnue to try to overcome it will be very resiurce intensive. Therefore, it is decided to stop the evolution process and the selected candidates from the <i>n<sub>h</sub>-1</i> generation are used as the final candidates and stored as the output.
+            </p>
+          </div>
+          <br>
+          <div id='b-score'>
+            <span class='subtitle'>7.4 Break score</span>
+            <p>
+              If the maximum score of the current generation is greater than the break score <i>s</i>, it is assumed that the evolution process has reached the highest score possible.  Therefore, it is stopped and the selected candidates of the current generation are stored as the output of the algorithm.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class='col-xs-12'>
+        <div id='output' class='single-element'>
+          <h3 id='sec-title' class='text-center'>8. Output</h3>
+          <p>
+            Three output files are generated from a succeful execution of this algorithm: a .xslx file containing the results of the execution, a .log file and a .png figure.
+          </p>
+          <br>
+          <div id='xslx'>
+            <span class='subtitle'>8.1 .xslx file</span>
+            <p>
+              This file contains the final selected aptamer candidates with their score a summary of the values used to calculate it. The values added at each column are the following:
+              <ul>
+                <li><b>Index</b>: Number used by the algorithm to identify each sequence within the a pool.</li>
+                <li><b>sequences</b>: The nucleotide sequence of each selected aptamer candidate.</li>
+                <li><b>dMFE</b>: (Only when an oligonucleotide target is provided). The value obtained from <a href='#eq-6'>equation 6</a></li>
+                <li><b>score</b>: The value obtained from either <a href='#eq-4'>equation 4</a> or <a href='#eq-7'>equation 7</a>, depending on wether a oiligonucleotide hybridation target was provided.</li>
+                <li><b>EditDis_seq_<i>&ltmotif id.&gt</i></b>: Ed<sub>ij [seq]</sub>.</li>
+                <li><b>EditDis_seq_<i>&ltmotif id.&gt</i>_norm</b>: Ed<sub>ij [seq]</sub> scaled between 0 and 1 with equation 10.
+                  <p id='eq-10'>
+                    $$Ed_{scaled}=\frac{1}{1+Ed} \tag{10}$$
+                  </p>
+                </li>
+                <li><b>EditDis_strc_<i>&ltmotif id.&gt</i></b>: Ed<sub>ij [structure]</sub>.</li>
+                <li><b>EditDis_strc_<i>&ltmotif id.&gt</i>_norm</b>: Ed<sub>ij [structure]</sub> scaled between 0 and 1 with <a href='#eq-10'>equation 10</a>.</li>
+                <li><b>strc_MFE</b>: The MFE of the secondary structure of the aptamer.</li>
+                <li><b>strc_MFE_norm</b>: The MFE of the secondary structure of the aptamer scaled between 0 and 1 with equation 11.
+                  <p id='eq-11'>
+                    $$MFE_{scaled}=\frac{MFE_{j [adj.]}}{MFE_{prev. examples}} \tag{11}$$
+                  </p>
+                </li>
+                <li><b>dMFE_norm</b>: dMFE scaled between 0 and 1 with equation 12
+                  <p id='eq-12'>
+                    $$dMFE_{scaled}=\frac{dMFE}{\left|{MFE_{rev. comp. [h]}}\right|} \tag{12}$$
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </div>
+          <br>
+          <div id='log'>
+            <span class='subtitle'>8.2 .log file</span>
+            <p>
+              A .log file is created which contains the tanscript of the steps that the algorithm has taken with their timestamp. As shown in the example bellow.
+            </p>
+            <div id='log-img'></div>
+            <div class='img-footer'><b>Fig. 2.</b> Example of .log file generated by the algorithm.</div>
+          </div>
+          <br>
+          <div id='fig'>
+            <span class='subtitle'>8.3 Figure</span>
+            <p>
+              A .png figure is generated, this is a graph that summarizes the process the algorithm took during the directed evolution part. It shown at the x-axis the generation and in the y-axis the highest score obatined for that generation. As shown in the figure bellow.
+              <br>
+              This figure is geerated in real-time and it is shown during the execution of the directed evolution part of the algoritm and it is updated after each generation.
+              <br>
+              <b>Note:</b> This figure will only generate if the vizualise parameter is set to "True".
+            </p>
+            <div id='fig-img'></div>
+            <div class='img-footer'><b>Fig. 3.</b> Example of graph generated by the algorithm to summarize the process of the directed evolution.</div>
+          </div>
+        </div>
+      </div>
+      <div class='col-xs-12'>
+        <div id='license' class='single-element'>
+          <h3 id='sec-title' class='text-center'>9. License and citation</h3>
+          <p>
+            This software is licensed under the MIT license (shown bellow). If you use this software for a publication, please cite:
+          </p>
+          <div class='option-box'>Rueda-Silva, Juan Carlos. (2021). AptaDesign</div>
+          <br> <br> <br>
+          <div class='option-box' id='license-content'>
+            <div class='options-title'>MIT License</div>
+            <p>
+<br> <br>              
+Copyright (c) 2021 Juan Carlos Rueda Silva
+<br> <br>
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+<br> <br>
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+<br> <br>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.<br>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class='col-md-6'>
+        <div id='eq-index' class='single-element'>
+          <h3 id='sec-title' class='text-center'>10. Equation index</h3>
+          <div>
+            <ul>
+              <li><a href='#eq-1'>Equation 1</a></li>
+              <li><a href='#eq-2'>Equation 2</a></li>
+              <li><a href='#eq-3'>Equation 3</a></li>
+              <li><a href='#eq-4'>Equation 4</a></li>
+              <li><a href='#eq-5'>Equation 5</a></li>
+              <li><a href='#eq-6'>Equation 6</a></li>
+              <li><a href='#eq-7'>Equation 7</a></li>
+              <li><a href='#eq-8'>Equation 8</a></li>
+              <li><a href='#eq-9'>Equation 9</a></li>
+              <li><a href='#eq-10'>Equation 10</a></li>
+              <li><a href='#eq-11'>Equation 11</a></li>
+              <li><a href='#eq-12'>Equation 12</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class='col-md-6'>
+        <div id='fig-index' class='single-element'>
+          <h3 id='sec-title' class='text-center'>11. Figure index</h3>
+          <div>
+            <ul>
+              <li><a href='#motif-img'>Fig. 1</a></li>
+              <li><a href='#log-img'>Fig. 2</a></li>
+              <li><a href='#fig-img'>Fig. 3</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="panel-footer">
+    <div class="container">
+      <div class="row">
+        <section id="cite" class="col-sm-6">
+          <span id='cite-title'>Please cite:</span><br>
+          <p id='citation'>Rueda-Silva J.C. (2021)</p>
+          <hr class="visible-xs">
+        </section>
+        <section id="contact" class="col-sm-6">
+          <span id='contact-title'>Contact:</span><br>
+          <a href='mailto:jcarlosruedasilva@gmail.com' id='email'>jcarlosruedasilva@gmail.com</a>
+        </section>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
