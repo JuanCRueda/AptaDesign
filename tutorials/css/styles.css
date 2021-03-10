@@ -14,7 +14,7 @@ h3{font-size: 150%;
 	font-weight: bold;}
 
 #logo-img {
-  background: url('/images/logo.png') no-repeat;
+  background: url('../images/logo.png') no-repeat;
   background-size: 100%;
   width: 150px;
   height: 85px;
@@ -62,7 +62,7 @@ a#Button{color: #005206;}
 	font-size: 80%}
 #email{font-size: 70%}
 
-#AptaDesign-logo{background: url('/images/logo.png') no-repeat;
+#AptaDesign-logo{background: url('../images/logo.png') no-repeat;
   background-size: 100%;
   width: 250px;
   height: 150px;
