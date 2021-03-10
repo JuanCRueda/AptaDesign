@@ -11,7 +11,12 @@ from os import path, mkdir
 import logging
 
 def AptaDesign(fasta_file='',n_conserved_seqs=8,Hybridation_target='',n_pool=100,n_gen=1000,n_candidates=10,min_length=10,hyperdiverse_generations=3,max_consecutive_hyperdiverse=10,max_consecutive_score=10,visualize='True',break_score=0.99,output_path='.\\',output_name='Final_candidates'):
-    print('Welcome to AptaDesign 1.0.0')
+    print('Welcome to AptaDesign v1.0.4')
+    print('------------------------------------------')
+    print('If you use this software for a publication, please cite:')
+    print('Rueda-Silva, Juan Carlos. (2021). AptaDesign')
+    print('------------------------------------------')
+    print('Copyright: 2021 Juan Carlos Rueda Silva')
     print('------------------------------------------')
     if not(path.isfile(fasta_file)):
         print('Please provide the path to a valid fasta/fastq file')
@@ -755,9 +760,8 @@ def check_float_input(inpt):
         return False
 
 def main():
-    print('Welcome to Aptadesigner v1.0.0')
+    print('Welcome to Aptadesigner v1.0.4')
     print('------------------------------------------')
-    print('Please cite: ')
     print('Press enter to use the defaults')
     print('Please provide the path to your desired fasta or fastq file')
     while True:
