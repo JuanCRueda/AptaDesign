@@ -25,52 +25,80 @@ README.md: Short description of this software tool with instructions on how to u
 #### 1.2. Setting up the environment
 This software tool requires Python 3.5 or supperior, to verify the Python installation run the following command:
 
+```
 > python -V
+```
+
 Which shloud output something similar to:
 
+```
 Python 3.8.5
+```
+
 If there is no Python installation present or if it is inferior to Python 3.5, please download a more recent python installation.
 
 
 For the installation of the software we will need PIP, please make sure that PIP is installed by running the following command:
 
+```
 > pip -V
+```
+
 Which should output something similar to:
 
+```
 pip 21.0.1 from C:\...
+```
+
 If there is no PIP installation availible, please install it by running the following command
 
+```
 > python -m ensurepip
+```
 
 #### 1.3. Installing the software
 Extract the entire contents of the downloaded zip folder
 Open a command line on the directory were contents of the download are or go there using cd
 Run the following command:
+
+```
 > pip install -r requirements.txt
+```
+
 After this the installation should be ready.
 
 
 #### 1.4. Testing the installation
 In orther to test that the installation was succefull, in a command line within the folder conatining the downloaded files, please run the following command:
 
+```
 > python -c "from AptaDesign import AptaDesign; AptaDesign(fasta_file='.\\examples\\Fc_Aptamers.fasta', n_gen=2, Hybridation_target='GTGGGGCATTGTGGGTGGGTGTGG', output_path='<Your desired output path>', outout_name='test.1')"
-Important note: Repleace <Your desired output path> with the path to the directory where you want to save the output using double slashes (\\) instead of single slashes (\). For example: C:\Users\Documents\ should be entered as C:\\Users\\Documents\\
+```
+
+Important note: Repleace ```<Your desired output path>``` with the path to the directory where you want to save the output using double slashes (```\\```) instead of single slashes (```\```). For example: ```C:\Users\Documents\``` should be entered as ```C:\\Users\\Documents\\```
 
 
 Which should output after a few seconds something similar to:
 
+```
 Welcome to AptaDesign v1.0.4
 ------------------------------------------
+```
+
 And after around 30 minutes:
 
+```
 Output located in: <Your path>\\test.1
 ------------------------------------------
 Thank you for using AptaDesign
+```
+
 And in your output directory you should find the following 3 files with contents similar as the following:
 
 test.1.log
 test.1_results.xlsx
 test.1_fig.png
+
 If this test shows any errors please go through the installation again.
 
 
@@ -78,23 +106,29 @@ If this test shows any errors please go through the installation again.
 #### 2.1. Using the interface mode
 In order to start the software in the User Interface mode, type the following command:
 
+```
 > python AptaDesign.py
+```
+
 And follow the instructions as they are promted the terminal. It will ask for the input fasta or fastq file, number of motifs to use for the evaluation, pool size (number of sequences generated per cycle) to use, number of generations (cycles) to simulate, number of candidates (number of sequences selected per cycle), number of generations without score increase to stop the program, hybridation target (if desired), the path to save the output, title of the project and wether to generate graphs. If you enter to Advanced Options you can enter the minumum length of the aptamers, the number of generations per hyperdiverse period, the maximum number of consecutive hyperdiverse periods before stopping the program and the minimum score that will cause the program to stop.
 
 
 #### 2.2. Using the function mode
 In order to start the software in the function mode, type the following command:
 
+```
 > python -c "from AptaDesign import AptaDesign; AptaDesign(<OPTIONS>)"
+```
+
 With the options shown bellow.
 
-Options: Enter the options separated by commas (,), assign the options values using the equal sign (=). Example: AptaDesign(fasta_file='.\\examples\\Fc_Aptamers.fasta,n_gen=1000)
+Options: Enter the options separated by commas (```,```), assign the options values using the equal sign (```=```). Example: ```AptaDesign(fasta_file='.\\examples\\Fc_Aptamers.fasta,n_gen=1000)```
 
 For the options not marked as required, if no value is provided, the default value will be used.
 
-Important: non-numerical values: For the options that require non-numerical values, input them between single quotes (')
+Important: non-numerical values: For the options that require non-numerical values, input them between single quotes (```'```)
 
-Important: paths: Input the paths using double slashes (\\) instead of single (\)
+Important: paths: Input the paths using double slashes (```\\```) instead of single (```\```)
 
 Options for the function mode
 fasta_file:(required) The path to the fasta or fastq file containing the sequences from which the algorithm will extract the motifs.
