@@ -12,15 +12,15 @@ Rueda-Silva, Juan Carlos. (2021). AptaDesign
 ### Installaton
 #### 1.1. Contents of the download bundle
 To begin please download the scource code distribution bundle. The download bundle contains the following files, which will be required during the installation and for the succeful run of the program. The files are:
-AptaDesign.py: the Python source code for this software tool.
-Examples folder: a series of premade files that will be used for testing the installation
-Fc_Aptamers.fasta: A fasta file containing the compilation of aptamers previously reported in literature specific for the Fc stem of mammalian IgG. This file contains the aptamers reported by Yang et al. (2020), Miyakawa et al. (2008), Bognár & Gyurcsányi (2020), Yoshida et al. (2019) and Ma et al. (2013).
-HRP_DNAzyne.txt: The seuqnece of a HRP-mimicking DNAzyme, previously reported by Alizadeh et al. (2020).
+- AptaDesign.py: the Python source code for this software tool.
+- Examples folder: a series of premade files that will be used for testing the installation
+- Fc_Aptamers.fasta: A fasta file containing the compilation of aptamers previously reported in literature specific for the Fc stem of mammalian IgG. This file contains the aptamers reported by Yang et al. (2020), Miyakawa et al. (2008), Bognár & Gyurcsányi (2020), Yoshida et al. (2019) and Ma et al. (2013).
+- HRP_DNAzyne.txt: The seuqnece of a HRP-mimicking DNAzyme, previously reported by Alizadeh et al. (2020).
 requirements.txt: The list of the required Python modules for this software tool
-ViennaRNA_Package: A partial installation of the ViennaRNA Package conatining the minumum files required for the use of the compiled version of RNAfold, which it is used by this software for MFE calculation and secondary structure predeiction.
-RNAhybrid-2.1.2: A partial installation of the compiled RNAhybrid software tool. It is used by this software tool for hybridation MFE calculation.
-LICENSE: License information for this sofwtare tool. This software tool is licensed under the MIT license.
-README.md: Short description of this software tool with instructions on how to use it.
+- ViennaRNA_Package: A partial installation of the ViennaRNA Package conatining the minumum files required for the use of the compiled version of RNAfold, which it is used by this software for MFE calculation and secondary structure predeiction.
+- RNAhybrid-2.1.2: A partial installation of the compiled RNAhybrid software tool. It is used by this software tool for hybridation MFE calculation.
+- LICENSE: License information for this sofwtare tool. This software tool is licensed under the MIT license.
+- README.md: This document.
 
 #### 1.2. Setting up the environment
 This software tool requires Python 3.5 or supperior, to verify the Python installation run the following command:
@@ -126,32 +126,32 @@ Options: Enter the options separated by commas (```,```), assign the options val
 
 For the options not marked as required, if no value is provided, the default value will be used.
 
-Important: non-numerical values: For the options that require non-numerical values, input them between single quotes (```'```)
+**Important**: non-numerical values: For the options that require non-numerical values, input them between single quotes (```'```)
 
-Important: paths: Input the paths using double slashes (```\\```) instead of single (```\```)
+**Important**: paths: Input the paths using double slashes (```\\```) instead of single (```\```)
 
 Options for the function mode
-fasta_file:(required) The path to the fasta or fastq file containing the sequences from which the algorithm will extract the motifs.
-n_conserved_seqs: The number of motifs to be used for the evaluation. (default: 8)
-Hybridation_target:(optional) The sequence of a hybridation oligonucleotide target if desired.
-n_pool: Number of sequences to generate per cycle. (default: 100)
-n_gen: Number of cycles to simulate. (default: 1000)
-n_candidates: Number of sequences to select after each cycle. (default: 10)
-min_length: Minimum length of the apatmers. (default: 10)
-hyperdiverse_generations: Number of subgenerations per hyperdiverse period. (default: 3)
-max_consecutive_hyperdiverse: Maximum number of consicutive hyperdiverse periods. (default: 10)
-max_consecutive_score: Maximum number of consecutive generations without score improvement before stopping the program. (default: 10)
-visualize: ('T'/'F') Generate graphs for the project. (default: 'True')
-break_score: Minimum score that will cause the program to stop. (default: 0.99)
-output_path:(required) Path to save the output of the project.
-output_name:(required) Name of the project.
+- fasta_file:(required) The path to the fasta or fastq file containing the sequences from which the algorithm will extract the motifs.
+- n_conserved_seqs: The number of motifs to be used for the evaluation. (default: 8)
+- Hybridation_target:(optional) The sequence of a hybridation oligonucleotide target if desired.
+- n_pool: Number of sequences to generate per cycle. (default: 100)
+- n_gen: Number of cycles to simulate. (default: 1000)
+- n_candidates: Number of sequences to select after each cycle. (default: 10)
+- min_length: Minimum length of the apatmers. (default: 10)
+- hyperdiverse_generations: Number of subgenerations per hyperdiverse period. (default: 3)
+- max_consecutive_hyperdiverse: Maximum number of consicutive hyperdiverse periods. (default: 10)
+- max_consecutive_score: Maximum number of consecutive generations without score improvement before stopping the program. (default: 10)
+- visualize: ('T'/'F') Generate graphs for the project. (default: 'True')
+- break_score: Minimum score that will cause the program to stop. (default: 0.99)
+- output_path:(required) Path to save the output of the project.
+- output_name:(required) Name of the project.
 
 #### 2.3. Output
 After the succeful run of the algorithm, a folder with the name of the project is created on the given output directory. This folder contains the following files
 
-A log file: Containing messages generated during the execution with timestamps.
-A png image: A graph of each generation vs. maximum score acgieved.
-A xlsx file: Containing the final selected candidates, their score and the values used for the calculation of the score
+- A log file: Containing messages generated during the execution with timestamps.
+- A png image: A graph of each generation vs. maximum score acgieved.
+- A xlsx file: Containing the final selected candidates, their score and the values used for the calculation of the score
 
 Please consult the software's documentation for more information:
 https://juancrueda.github.io/AptaDesign/documentation/index.html
