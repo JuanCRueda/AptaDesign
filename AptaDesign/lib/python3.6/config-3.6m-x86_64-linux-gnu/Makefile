@@ -29,8 +29,8 @@ MODLIBS=        $(LOCALMODLIBS) $(BASEMODLIBS)
 VERSION=	3.6
 srcdir=		..
 VPATH=		..
-abs_srcdir=	/build/python3.6-e9shER/python3.6-3.6.9/build-shared/..
-abs_builddir=	/build/python3.6-e9shER/python3.6-3.6.9/build-shared
+abs_srcdir=	/build/python3.6-1chSKv/python3.6-3.6.9/build-shared/..
+abs_builddir=	/build/python3.6-1chSKv/python3.6-3.6.9/build-shared
 
 
 CC=		x86_64-linux-gnu-gcc-8 -pthread
