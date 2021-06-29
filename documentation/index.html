@@ -146,7 +146,7 @@
                 <li><b><i>t</i></b>: Type of mutation to use.</li>
                 <li><b><i>h</i></b>: Number of subgenerations per hyperdiverse period.</li>
                 <li><b><i>m<sub>h</sub></i></b>: Size of the pool created after a hyperdiverse period.</li>
-                <li><b><i>n<sub>s</sub></i></b>: Maximum number of consecutive generations with the same maximum score</li>
+                <li><b><i>n<sub>ms</sub></i></b>: Maximum number of consecutive generations with the same maximum score</li>
                 <li><b><i>n<sub>h</sub></i></b>: Maximum number of consecutive hyperdiverse periods.</li>
                 <li><b><i>s</i></b>: Break Score.</li>
               </ul>
@@ -327,7 +327,7 @@
           <div id='score'>
             <span class='subtitle'>7.2 Score plateau</span>
             <p>
-              If the current generation is the <i>n<sub>s</sub>+1</i> consecutive generation with the same maximum score for the selected candidates, it is considered that the algoritm has reached a maximum with low possibilities of overcoming.  Therefore, this is asumed to be the maximum score to be reached by the evolution, so it is stopped and the candidates selected for this generation are store as the output. During testing, this was by far the most common stop condition reached.
+              If the current generation is the <i>n<sub>ms</sub>+1</i> consecutive generation with the same maximum score for the selected candidates, it is considered that the algoritm has reached a maximum with low possibilities of overcoming.  Therefore, this is asumed to be the maximum score to be reached by the evolution, so it is stopped and the candidates selected for this generation are store as the output. During testing, this was by far the most common stop condition reached.
               <br>
               It is important to note, that whilst increasing the value <i>n<sub>s</sub></i> increases the tolerance of the algorithm to local maxima, as it increases the time that it spends trying to overcome them. But this also increases the execution time and the computational resources needed.
             </p>
